@@ -5,19 +5,22 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 20px;
 `;
 
 const OptionWrapper = styled.div`
     height: 40px;
-    width: 90%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: white;
 `;
 
 const Option = styled.div`
     display: inherit;
     width: 90%;
+    align-items: center;
 `;
 
 const Icon = styled.img`

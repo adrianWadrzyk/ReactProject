@@ -9,6 +9,7 @@ const Wrapper = styled.div `
     justify-content: space-around;
     text-align: center;
     margin: 0px 0px 20px 0px;
+    background-color: white;
 `;
 
 const Avatar = styled.img`

@@ -1,20 +1,30 @@
 import styled from 'styled-components';
+import useDropdown from 'react-dropdown-hook';
 
 const Wrapper = styled.div`
     background-color: black;
 `
-const MenuOptions = styled.select``;
+const ShowMenuButton = styled.button``;
 
-const ExtendMenu = () => { 
+const MenuWrapper = styled.div``;
+
+const MenuOption = styled.button``
+
+const ExtendMenu= () => { 
+    const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
     return (
-        <Wrapper>
-            <MenuOptions>
-                <option value="home">Home</option>
-                <option value="home">Home</option>
-                <option value="home">Home</option>
-                <option value="home">Home</option>
-                <option value="home">Home</option>
-            </MenuOptions>
+        <Wrapper ref={wrapperRef}>
+           <ShowMenuButton onClick={toggleDropdown}>
+               Show menu
+           </ShowMenuButton>
+
+           {dropdownOpen &&
+             <MenuWrapper>
+                        <MenuOption> Item 1</MenuOption>
+                        <MenuOption> Item 2</MenuOption>
+                        <MenuOption> Item 3</MenuOption>
+            </MenuWrapper>
+             }
         </Wrapper>   
         )
 }

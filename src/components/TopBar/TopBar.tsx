@@ -16,8 +16,8 @@ const InnerWrapper = styled.div`
 const InputWrapper = styled.div`
     display: flex;
     justify-content: center;
-    align-items: center;
-    border: 1px solid black;
+    align-items: center;    
+    box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.3);
     width: 30%;
     padding: 3px 0;
 `;

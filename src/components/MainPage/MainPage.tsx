@@ -2,16 +2,19 @@ import styled from 'styled-components';
 
 import TopBar from '../TopBar/TopBar';
 import LeftNav from '../LeftNav/LeftNav';
+import ContentWrapper from '../Content/ContentWrapper';
 
 const Wrapper = styled.div`
     background-color: #dfd5d5;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
 `;
 
 const Content = styled.div`
-    width: 1200px;
-    align-items: center;
-    display:flex;
-    margin-top: 20px;
+    margin: 20px 10px;
+    width: 100%;
+    display: flex;
 `;
 
 const MainPage = () => { 
@@ -19,7 +22,8 @@ const MainPage = () => {
         <Wrapper>
             <TopBar />
             <Content>
-                 <LeftNav />
+                <LeftNav />
+                 <ContentWrapper></ContentWrapper>
             </Content>
         </Wrapper>
     );
