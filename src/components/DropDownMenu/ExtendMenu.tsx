@@ -8,15 +8,18 @@ import Filter  from './Filter';
 const Wrapper = styled.div`
     position: relative;
     display: inline-block;
-    width: 80%;
+    width: 50%;
     height: 31px;
 `;
 
-const ShowMenuButton = styled.button`
+const ShowMenu = styled.div`
     width: 100%;
-    border: 1px solid black;
+    border: none;
     height: 100%;
     background: none;
+    display: flex;    
+    justify-content: space-between;
+    align-items: center;
 `;
 
 const MenuWrapper = styled.div`
@@ -24,14 +27,20 @@ const MenuWrapper = styled.div`
     width: 100%;
 `;
 
+const Icon = styled.img`
+    width: 5px;
+    height: 5px;
+`;
+
+
 const ExtendMenu = () => { 
     const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
     return (
         <Wrapper ref={wrapperRef}>
-           <ShowMenuButton onClick={toggleDropdown}>
+           <ShowMenu onClick={toggleDropdown} >
                Show menu
-           </ShowMenuButton>
-
+               <Icon src="./media/arrow-down.png" alt="arrow-down"/>
+           </ShowMenu>
            {dropdownOpen &&
              <MenuWrapper>
                  <Filter></Filter>
