@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import SearchInput from './SearchInput';
-import ExtendMenu from './ExtendMenu';
+import ExtendMenu from '../DropDownMenu/ExtendMenu'
 
 import {Wrapper} from '../../styledHelpers/Components';
 
@@ -20,11 +20,12 @@ const InputWrapper = styled.div`
     box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.3);
     width: 30%;
     padding: 3px 0;
+    height:100%;
 `;
 
 const LeftContainer = styled.div`
     display: flex;
-    min-width: 15%;
+    min-width: 30%;
     align-items: center;
     justify-content: space-around;
 `;
@@ -50,7 +51,6 @@ const TopBar = () => {
             <InnerWrapper>
                 <LeftContainer>
                     <Logo src='./media/logo.png' alt="logo"/>
-                    <CustomImg src='./media/house2.png' alt="bell"/>
                     <ExtendMenu />
                 </LeftContainer>
                 <InputWrapper>

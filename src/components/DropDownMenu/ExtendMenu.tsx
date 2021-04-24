@@ -1,16 +1,30 @@
 import styled from 'styled-components';
 import useDropdown from 'react-dropdown-hook';
 
+import Option from './MenuOption'
+import Filter  from './Filter';
+
+
 const Wrapper = styled.div`
-    background-color: black;
-`
-const ShowMenuButton = styled.button``;
+    position: relative;
+    display: inline-block;
+    width: 80%;
+    height: 31px;
+`;
 
-const MenuWrapper = styled.div``;
+const ShowMenuButton = styled.button`
+    width: 100%;
+    border: 1px solid black;
+    height: 100%;
+    background: none;
+`;
 
-const MenuOption = styled.button``
+const MenuWrapper = styled.div`
+    position: absolute;
+    width: 100%;
+`;
 
-const ExtendMenu= () => { 
+const ExtendMenu = () => { 
     const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
     return (
         <Wrapper ref={wrapperRef}>
@@ -20,9 +34,8 @@ const ExtendMenu= () => {
 
            {dropdownOpen &&
              <MenuWrapper>
-                        <MenuOption> Item 1</MenuOption>
-                        <MenuOption> Item 2</MenuOption>
-                        <MenuOption> Item 3</MenuOption>
+                 <Filter></Filter>
+                 <Option></Option>
             </MenuWrapper>
              }
         </Wrapper>   
