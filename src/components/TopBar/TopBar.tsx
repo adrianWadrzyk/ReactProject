@@ -40,7 +40,7 @@ const Logo = styled.img`
 `;
 
 const CustomImg = styled.img`
-    padding: 0 10px;
+    margin: 0 10px;
     height: 20px;
     width: 20px;
 `;

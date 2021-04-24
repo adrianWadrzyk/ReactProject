@@ -26,8 +26,12 @@ const Option = styled.div`
 const Icon = styled.img`
    height: 20px;
    width: 20px;
-   padding: 0px 15px;
+   margin-right: 20px;
 `;
+
+const Title = styled.h3`
+    min-width: 60%;
+`
 
 const ProfileMenu = () => { 
     return (
@@ -35,33 +39,33 @@ const ProfileMenu = () => {
             <OptionWrapper>
                 <Option>
                     <Icon alt="network" src="./media/network.png"></Icon>
-                    <h3> Your Network</h3>
+                    <Title> Your Network</Title>
                     <Icon alt="user-plus" src="./media/user-plus.png"></Icon>
                 </Option>
             </OptionWrapper>
             <OptionWrapper>
                 <Option>
                     <Icon alt="icon" src="./media/publications.png"></Icon>
-                    <h3> Your Network</h3>
+                    <Title> Your Network</Title>
                     <Icon alt="plus" src="./media/plus.png"></Icon>
                 </Option>
             </OptionWrapper>
             <OptionWrapper>
                 <Option>
                     <Icon alt="publications" src="./media/publications.png"></Icon>
-                    <h3> Publications</h3>
+                    <Title> Publications</Title>
                 </Option>
             </OptionWrapper>
             <OptionWrapper>
                 <Option>
                     <Icon alt="ecosystem" src="./media/ecosystem.png"></Icon>
-                    <h3> Ecosystem</h3>
+                    <Title> Ecosystem</Title>
                 </Option>
             </OptionWrapper>
             <OptionWrapper>
                 <Option>
                     <Icon alt="entities" src="./media/entities.png"></Icon>
-                    <h3> Entities</h3>
+                    <Title> Entities</Title>
                 </Option>
             </OptionWrapper>
         </Wrapper>        
