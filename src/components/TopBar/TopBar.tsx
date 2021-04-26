@@ -27,6 +27,7 @@ const LeftContainer = styled.div`
     display: flex;
     min-width: 30%;
     align-items: center;
+    justify-content: space-around;
 `;
 
 const RightIconsContainer = styled.div`
@@ -35,7 +36,7 @@ const RightIconsContainer = styled.div`
 const Logo = styled.img`
     width: 50px;
     height: 50px;
-    margin: 5px 20px;
+    padding: 5px 0px;
 `;
 
 const CustomImg = styled.img`

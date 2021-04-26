@@ -9,61 +9,17 @@ const Option = styled.button`
     width: inherit;
     position:relative;
     display: block;
-    height: 30px;
+    height: 40px;
     border: none;
-    display: flex;
-    align-items: center;
-`;
-
-const Group = styled.div`
-    width: inherit;
-`;
-
-const GroupName = styled.h4`
-    background-color: white;
-    padding: 5px 10px;
-    font-size: 12px;
-    color: grey;
-`
-const OptionName = styled.p``;
-
-const Icon = styled.img`
-    padding: 0 10px;
+    border-bottom: 1px solid black;
 `;
 
 const MenuOption = () => { 
     return (
         <Wrapper>
-            <Group>
-                <GroupName>Platform</GroupName>
-                        <Option>
-                            <Icon src="./media/house.png"></Icon> 
-                            <OptionName>Item 1</OptionName>
-                        </Option>
-                        <Option>
-                            <Icon src="./media/house.png"></Icon> 
-                            <OptionName>Item 1</OptionName>
-                        </Option>
-                        <Option>
-                            <Icon src="./media/house.png"></Icon> 
-                            <OptionName>Item 1</OptionName>
-                        </Option>
-                </Group>
-                <Group>
-                    <GroupName>Workspaces</GroupName>
-                        <Option>
-                            <Icon src="./media/house.png"></Icon> 
-                            <OptionName>Item 1</OptionName>
-                        </Option>
-                        <Option>
-                            <Icon src="./media/house.png"></Icon> 
-                            <OptionName>Item 1</OptionName>
-                        </Option>
-                        <Option>
-                            <Icon src="./media/house.png"></Icon> 
-                            <OptionName>Item 1</OptionName>
-                        </Option>
-                </Group>
+                        <Option> Item 1</Option>
+                        <Option> Item 2</Option>
+                        <Option> Item 3</Option>
         </Wrapper>
         )
 }

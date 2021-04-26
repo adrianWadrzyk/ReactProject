@@ -2,24 +2,20 @@ import styled from 'styled-components';
 import useDropdown from 'react-dropdown-hook';
 
 import Option from './MenuOption'
-import Filter  from './Filter';
 
 
 const Wrapper = styled.div`
     position: relative;
     display: inline-block;
-    width: 50%;
+    width: 80%;
     height: 31px;
 `;
 
-const ShowMenu = styled.div`
+const ShowMenuButton = styled.button`
     width: 100%;
-    border: none;
+    border: 1px solid black;
     height: 100%;
     background: none;
-    display: flex;    
-    justify-content: space-between;
-    align-items: center;
 `;
 
 const MenuWrapper = styled.div`
@@ -27,23 +23,26 @@ const MenuWrapper = styled.div`
     width: 100%;
 `;
 
-const Icon = styled.img`
-    width: 5px;
-    height: 5px;
+const FilterInput = styled.input`
+    padding-left: 20px;
+    width: 80%;
+    height: 30px;
+    border: 1px solid black;
+    display: flex;
+    color: grey;
 `;
-
 
 const ExtendMenu = () => { 
     const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
     return (
         <Wrapper ref={wrapperRef}>
-           <ShowMenu onClick={toggleDropdown} >
+           <ShowMenuButton onClick={toggleDropdown}>
                Show menu
-               <Icon src="./media/arrow-down.png" alt="arrow-down"/>
-           </ShowMenu>
+           </ShowMenuButton>
+
            {dropdownOpen &&
              <MenuWrapper>
-                 <Filter></Filter>
+                 <FilterInput value="Filter..."></FilterInput>
                  <Option></Option>
             </MenuWrapper>
              }
