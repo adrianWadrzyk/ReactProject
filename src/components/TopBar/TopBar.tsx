@@ -25,7 +25,7 @@ const InputWrapper = styled.div`
 
 const LeftContainer = styled.div`
     display: flex;
-    min-width: 30%;
+    min-width: 20%;
     align-items: center;
     justify-content: space-around;
 `;

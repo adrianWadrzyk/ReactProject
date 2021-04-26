@@ -14,7 +14,8 @@ const Wrapper = styled.div`
 const Content = styled.div`
     margin: 20px 10px;
     width: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: 20% 80%;
 `;
 
 const MainPage = () => { 

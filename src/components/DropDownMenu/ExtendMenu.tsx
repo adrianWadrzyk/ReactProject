@@ -2,12 +2,13 @@ import styled from 'styled-components';
 import useDropdown from 'react-dropdown-hook';
 
 import Option from './MenuOption'
+import { ChangeEvent, useState } from 'react';
 
 
 const Wrapper = styled.div`
     position: relative;
     display: inline-block;
-    width: 80%;
+    width: 60%;
     height: 31px;
 `;
 
@@ -25,7 +26,7 @@ const MenuWrapper = styled.div`
 
 const FilterInput = styled.input`
     padding-left: 20px;
-    width: 80%;
+    width: 100%;
     height: 30px;
     border: 1px solid black;
     display: flex;
@@ -34,6 +35,13 @@ const FilterInput = styled.input`
 
 const ExtendMenu = () => { 
     const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
+
+    const [inputText, setInputText] = useState<string>('');
+    const inputHandler = (e : ChangeEvent<HTMLInputElement>) => { 
+        const text =  e.target.value;
+        setInputText(text);
+    }
+
     return (
         <Wrapper ref={wrapperRef}>
            <ShowMenuButton onClick={toggleDropdown}>
@@ -42,8 +50,8 @@ const ExtendMenu = () => {
 
            {dropdownOpen &&
              <MenuWrapper>
-                 <FilterInput value="Filter..."></FilterInput>
-                 <Option></Option>
+                 <FilterInput value={inputText} onChange={inputHandler}></FilterInput>
+                 <Option inputText={inputText}></Option>
             </MenuWrapper>
              }
         </Wrapper>   
