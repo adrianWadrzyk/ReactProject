@@ -8,15 +8,19 @@ import { ChangeEvent, useState } from 'react';
 const Wrapper = styled.div`
     position: relative;
     display: inline-block;
-    width: 60%;
+    min-width: 70%;
     height: 31px;
 `;
 
 const ShowMenuButton = styled.button`
     width: 100%;
-    border: 1px solid black;
+    border: none;
     height: 100%;
     background: none;
+    display: flex;    
+    justify-content: space-between;
+    padding: 0 5px;
+    align-items: center;
 `;
 
 const MenuWrapper = styled.div`
@@ -33,6 +37,11 @@ const FilterInput = styled.input`
     color: grey;
 `;
 
+const Icon = styled.img`
+    width: 5px;
+    height: 5px;
+`;
+
 const ExtendMenu = () => { 
     const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
 
@@ -46,6 +55,7 @@ const ExtendMenu = () => {
         <Wrapper ref={wrapperRef}>
            <ShowMenuButton onClick={toggleDropdown}>
                Show menu
+               <Icon src="./media/arrow-down.png" alt="arrow-down"/>
            </ShowMenuButton>
 
            {dropdownOpen &&
