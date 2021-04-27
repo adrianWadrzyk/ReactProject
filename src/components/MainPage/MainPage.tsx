@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import TopBar from '../TopBar/TopBar';
 import LeftNav from '../LeftNav/LeftNav';
 import ContentWrapper from '../Content/ContentWrapper';
-
+import Entities from '../Entities/Entities';
 const Wrapper = styled.div`
     background-color: #dfd5d5;
     display: flex;
@@ -28,6 +28,7 @@ const MainPage = () => {
                 <Content>
                     <LeftNav />
                     <Route exact path="/" component={ContentWrapper} />
+                    <Route path="/entities" component={Entities} />
                 </Content>
             </Wrapper>
         </Router>
