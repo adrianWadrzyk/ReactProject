@@ -22,13 +22,15 @@ const Content = styled.div`
 
 const MainPage = () => { 
     return (
-        <Wrapper>
-            <TopBar />
-            <Content>
-                <LeftNav />
-                 <ContentWrapper></ContentWrapper>
-            </Content>
-        </Wrapper>
+        <Router>
+            <Wrapper>
+                <TopBar />
+                <Content>
+                    <LeftNav />
+                    <Route exact path="/" component={ContentWrapper} />
+                </Content>
+            </Wrapper>
+        </Router>
     );
 };
 
