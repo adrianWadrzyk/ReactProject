@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import {Link} from 'react-router-dom';
 const Wrapper = styled.div`
   width: 100%;
 `;
@@ -38,7 +38,7 @@ const MenuOption = (props: any) => {
         {"Home".toLowerCase().includes(props.inputText.toLowerCase()) && (
           <Option>
             <Icon src="./media/house.png"></Icon>
-            <OptionName>Home</OptionName>
+            <OptionName><Link to="/">Home</Link></OptionName>
           </Option>
         )}
         {"Publication"
@@ -58,7 +58,7 @@ const MenuOption = (props: any) => {
         {"Entities".toLowerCase().includes(props.inputText.toLowerCase()) && (
           <Option>
             <Icon src="./media/entities.png"></Icon>
-            <OptionName>Entities</OptionName>
+            <OptionName><Link to="/entities">Entities</Link></OptionName>
           </Option>
         )}
         {"Administration"
