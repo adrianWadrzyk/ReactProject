@@ -1,11 +1,11 @@
 import styled from 'styled-components';
+import LatestPublications from './LatestPublications';
 
 const Wrapper = styled.div``;
 
 const ContentWrapper = styled.div`
-    background-color: #3e3eb1;
-    height: 20vh;
-    width: 90%;
+    height: 40vh;
+    width: 100%;
     margin: 0 auto;
     padding: 20px;
 `
@@ -13,7 +13,9 @@ const ContentWrapper = styled.div`
 const Content = () => { 
     return(
         <Wrapper>
-            <ContentWrapper>sdsd</ContentWrapper>
+            <ContentWrapper>
+                <LatestPublications></LatestPublications>
+            </ContentWrapper>
             <ContentWrapper>sdsd</ContentWrapper>
         </Wrapper>
         )
