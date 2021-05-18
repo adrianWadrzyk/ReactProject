@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import LatestPublications from './LatestPublications';
-
+import ResumeYouWork from './Resume you work';
 const Wrapper = styled.div``;
 
 const ContentWrapper = styled.div`
@@ -16,7 +16,9 @@ const Content = () => {
             <ContentWrapper>
                 <LatestPublications></LatestPublications>
             </ContentWrapper>
-            <ContentWrapper>sdsd</ContentWrapper>
+            <ContentWrapper>
+                <ResumeYouWork></ResumeYouWork>
+            </ContentWrapper>
         </Wrapper>
         )
 }

@@ -8,7 +8,6 @@ const Wrapper = styled.div`
     max-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: red;
 `
 const LeftNav = () => { 
     return(
