@@ -7,7 +7,6 @@ const ContentWrapper = styled.div`
     height: 40vh;
     width: 100%;
     margin: 0 auto;
-    padding: 20px;
 `
 
 const Content = () => { 
