@@ -1,5 +1,10 @@
 import styled from 'styled-components';
-
+import React, {FC, useEffect, useState} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router';
+import { getUser, getUsers } from '../../actions/userActions';
+import { IState } from '../../reducers';
+import { IUserReducer } from '../../reducers/userReducers';
 
 const Wrapper = styled.div `
     width: 100%;
@@ -25,12 +30,31 @@ const FullName = styled.h2`
 
 const JobTitle = styled.h4``;
 
+type GetUser = ReturnType<typeof getUser>
+type GetUsers = ReturnType<typeof getUsers>
+
+type PostParams = { 
+    id: string;
+}
+
 const Profile = () => { 
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch<GetUser>(getUser("1"));
+       }, []);
+
+    const rec = useSelector<IState, IUserReducer> (state => ({
+        ...state.users
+    }));
+
+    const data = rec.user;
+
     return (
         <Wrapper>
                 <Avatar alt="avatar" src="./media/profile.png"></Avatar>
-                <FullName>Adrian Wądrzyk</FullName>
-                <JobTitle>Google Company</JobTitle>
+                <FullName>{data.name} {data.username}</FullName>
+                <JobTitle>{data.company.name}</JobTitle>
         </Wrapper>        
     );
 }
