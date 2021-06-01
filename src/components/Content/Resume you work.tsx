@@ -1,5 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Pagination from 'react-js-pagination';
+
 import { IState } from '../../reducers';
 import { IWorkspaceReducer } from '../../reducers/workSpaceReducers';
 
@@ -37,6 +39,25 @@ const FooterContractType = styled.p`
   padding: 0 20px;
 `;
 
+const PaginationConteiner = styled.div`
+  margin-top: 10px;
+
+  & ul{ 
+    display: flex;
+    text-align: center;
+    justify-content: center;
+  }
+
+  & li {
+    padding: 0 10px;
+  }
+
+  & a { 
+    text-decoration: none;
+    color: black;
+  }
+`
+
 const Date = styled.p``;
 
 type GetPosts = ReturnType<typeof getPosts>
@@ -53,9 +74,20 @@ const ResumeYouWork = () => {
   }))
 
   const data = rec.postList;
-  console.log(data);
+  const panelPerPage = 3;
+  const [activePage, setCurrentPage] = useState(1);
 
-  const renderWorkPanels = data.map(ele => (
+    // Logic for displaying current todos
+    const indexOfLastPost  = activePage * panelPerPage;
+    const indexOfFirsPost = indexOfLastPost - panelPerPage;
+    const currentPosts     = data.slice( indexOfFirsPost, indexOfLastPost );
+
+    const handlePageChange = ( pageNumber : any ) => {
+      console.log( `active page is ${ pageNumber }` );
+      setCurrentPage( pageNumber )
+   };
+
+  const renderWorkPanels = currentPosts.map(ele => (
       <WorkPanel>
       <Title>
         {ele.title}
@@ -75,7 +107,16 @@ const ResumeYouWork = () => {
     <Wrapper>
       <Header>Resume you work</Header>
        {renderWorkPanels}
-     
+
+      <PaginationConteiner>
+            <Pagination
+               activePage={ activePage }
+               itemsCountPerPage={ 3 }
+               totalItemsCount={ data.length }
+               pageRangeDisplayed={ 3 }
+               onChange={ handlePageChange }
+            />
+      </PaginationConteiner>
       
     </Wrapper>
   );
