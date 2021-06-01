@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import LatestPublications from './LatestPublications';
 import ResumeYouWork from './Resume you work';
+import Workspaces from './Workspaces';
+
 const Wrapper = styled.div``;
 
 const ContentWrapper = styled.div`
@@ -15,6 +17,7 @@ const Content = () => {
             <ContentWrapper>
                 <LatestPublications></LatestPublications>
             </ContentWrapper>
+            <Workspaces></Workspaces>
             <ContentWrapper>
                 <ResumeYouWork></ResumeYouWork>
             </ContentWrapper>
