@@ -1,4 +1,11 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { IState } from '../../reducers';
+import { IWorkspaceReducer } from '../../reducers/workSpaceReducers';
+
 import styled from "styled-components";
+import { getPosts } from "../../actions/workSpaceActions";
+
 
 const Wrapper = styled.div``;
 
@@ -32,42 +39,44 @@ const FooterContractType = styled.p`
 
 const Date = styled.p``;
 
+type GetPosts = ReturnType<typeof getPosts>
+
 const ResumeYouWork = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch<GetPosts>(getPosts())
+  }, []);
+
+  const rec = useSelector<IState, IWorkspaceReducer> (state => ({
+    ...state.posts
+  }))
+
+  const data = rec.postList;
+  console.log(data);
+
+  const renderWorkPanels = data.map(ele => (
+      <WorkPanel>
+      <Title>
+        {ele.title}
+      </Title>
+      <PanelDescription>
+        {ele.body}
+      </PanelDescription>
+      <Footer>
+        <FooterName>Subsid.corp</FooterName>
+        <FooterContractType>Corporate</FooterContractType>
+        <Date> Updated 3 days ago by John Doe</Date>
+      </Footer>
+    </WorkPanel>
+  ))
+
   return (
     <Wrapper>
       <Header>Resume you work</Header>
-      <WorkPanel>
-        <Title>
-          World Company SAS
-        </Title>
-        <PanelDescription>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt iste
-          neque blanditiis adipisci illum, porro suscipit quisquam a fuga
-          reiciendis minima eius vero vel atque officiis temporibus in non
-          praesentium?
-        </PanelDescription>
-        <Footer>
-          <FooterName>Subsid.corp</FooterName>
-          <FooterContractType>Corporate</FooterContractType>
-          <Date> Updated 3 days ago by John Doe</Date>
-        </Footer>
-      </WorkPanel>
-      <WorkPanel>
-        <Title>
-          World Company SAS
-        </Title>
-        <PanelDescription>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt iste
-          neque blanditiis adipisci illum, porro suscipit quisquam a fuga
-          reiciendis minima eius vero vel atque officiis temporibus in non
-          praesentium?
-        </PanelDescription>
-        <Footer>
-          <FooterName>Subsid.corp</FooterName>
-          <FooterContractType>Corporate</FooterContractType>
-          <Date> Updated 3 days ago by John Doe</Date>
-        </Footer>
-      </WorkPanel>
+       {renderWorkPanels}
+     
+      
     </Wrapper>
   );
 };

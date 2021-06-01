@@ -6,6 +6,10 @@ import TopBar from '../TopBar/TopBar';
 import LeftNav from '../LeftNav/LeftNav';
 import ContentWrapper from '../Content/ContentWrapper';
 import Entities from '../Entities/Entities';
+
+import {store} from '../../store';
+import {Provider} from 'react-redux';
+
 const Wrapper = styled.div`
     background-color: #dfd5d5;
     display: flex;
@@ -22,6 +26,7 @@ const Content = styled.div`
 
 const MainPage = () => { 
     return (
+        <Provider store={store}>
         <Router>
             <Wrapper>
                 <TopBar />
@@ -32,6 +37,7 @@ const MainPage = () => {
                 </Content>
             </Wrapper>
         </Router>
+        </Provider>
     );
 };
 
