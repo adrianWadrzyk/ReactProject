@@ -1,4 +1,16 @@
 import styled from 'styled-components';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import PublicationPhoto from './PublicationPhoto';
+
+import { getUser, getUsers } from '../../actions/userActions';
+import { getPublications } from '../../actions/latestPublicationsActions';
+
+import { IUserReducer } from '../../reducers/userReducers';
+import { ILatestPublicationReducer } from '../../reducers/latestPublicationsReducers';
+
+import { IState } from '../../reducers';
+
 
 const Conteiner = styled.div`
     height:100%;
@@ -46,12 +58,6 @@ const Publication = styled.div`
     height: 25%;
 `;
 
-const PublicationPhoto = styled.div`
-    width: 30%;
-    height: inherit;
-    grid-area: photo;
-`;
-
 const PublicationDescription = styled.p`
     color: black;
     line-height: 1.2em;
@@ -66,33 +72,48 @@ const Author = styled.div`
     grid: author;
 `;
 
+type GetUsers = ReturnType<typeof getUsers>
+type GetPublications = ReturnType<typeof getPublications>
+
 const LatestPublications = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch<GetUsers>(getUsers())
+      }, []);
+    
+      const users = useSelector<IState, IUserReducer> (state => ({
+        ...state.users
+    }))
+
+    useEffect(() => {
+        dispatch<GetPublications>(getPublications())
+    }, []);
+
+    const publications = useSelector<IState, ILatestPublicationReducer> (state => ({
+        ...state.latesPublications
+    }))
+
+    const temp = publications.publicationsList[0];
+    const user = users.userList;
+
     return(
       <Conteiner>
           <NewestPublication>
-            <PublicationDescription>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus error explicabo iste facilis quas...and one more line for demo</PublicationDescription>
-            <Author className={authorNewest}> January 25 Janik</Author>
+            <PublicationDescription></PublicationDescription>
+            <Author className={authorNewest}> January 25 </Author>
           </NewestPublication>
           <RightConteinerPublications>
             <Header>
                 Latest publications
             </Header>
-            <Publication>
-                <PublicationPhoto>Photo</PublicationPhoto>
-                <PublicationDescription>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus error explicabo iste facilis quas...and o</PublicationDescription>
-                <Author> January 25 Janik</Author>
-            </Publication>
-            <Publication>
-                <PublicationPhoto>Photo</PublicationPhoto>
-                <PublicationDescription>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus error explicabo iste facilis quas...and o</PublicationDescription>
-                <Author> January 25 Janik</Author>
-            </Publication>
-            <Publication>
-                <PublicationPhoto>Photo</PublicationPhoto>
-                <PublicationDescription>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus error explicabo iste facilis quas...and o</PublicationDescription>
-                <Author> January 25 Janik</Author>
-            </Publication>
-            <PublicationFooter>See more publication</PublicationFooter>
+            
+             <Publication>
+                 <PublicationPhoto id={1}></PublicationPhoto>
+                 <PublicationDescription></PublicationDescription>
+                 <Author> January 25 Janik</Author>
+             </Publication>
+   
           </RightConteinerPublications>
       </Conteiner>
     )
