@@ -4,9 +4,11 @@ import Pagination from 'react-js-pagination';
 
 import { IState } from '../../reducers';
 import { IWorkspaceReducer } from '../../reducers/workSpaceReducers';
+import { IUserReducer } from '../../reducers/userReducers';
 
-import styled from "styled-components";
+import styled from "styled-components"; 
 import { getPosts } from "../../actions/workSpaceActions";
+import { getUser, getUsers } from '../../actions/userActions';
 
 
 const Wrapper = styled.div``;
@@ -40,7 +42,7 @@ const FooterContractType = styled.p`
 `;
 
 const PaginationConteiner = styled.div`
-  margin-top: 10px;
+  margin: 10px 0;
 
   & ul{ 
     display: flex;
@@ -61,6 +63,7 @@ const PaginationConteiner = styled.div`
 const Date = styled.p``;
 
 type GetPosts = ReturnType<typeof getPosts>
+type GetUsers = ReturnType<typeof getUsers>
 
 const ResumeYouWork = () => {
   const dispatch = useDispatch();
@@ -69,40 +72,45 @@ const ResumeYouWork = () => {
     dispatch<GetPosts>(getPosts())
   }, []);
 
-  const rec = useSelector<IState, IWorkspaceReducer> (state => ({
-    ...state.posts
+ 
+  const posts = useSelector<IState, IWorkspaceReducer> (state => ({
+      ...state.posts
   }))
 
-  const data = rec.postList;
-  const panelPerPage = 3;
+  const users = useSelector<IState, IUserReducer> (state => ({
+      ...state.users
+  }))
+
+  const data = posts.postList;
+  const usersList = users.userList;
+  const panelPerPage = 10;
   const [activePage, setCurrentPage] = useState(1);
 
     // Logic for displaying current todos
     const indexOfLastPost  = activePage * panelPerPage;
     const indexOfFirsPost = indexOfLastPost - panelPerPage;
-    const currentPosts     = data.slice( indexOfFirsPost, indexOfLastPost );
+    const currentPosts = data.slice( indexOfFirsPost, indexOfLastPost );
 
     const handlePageChange = ( pageNumber : any ) => {
-      console.log( `active page is ${ pageNumber }` );
       setCurrentPage( pageNumber )
    };
 
   const renderWorkPanels = currentPosts.map(ele => (
       <WorkPanel>
       <Title>
-        {ele.title}
+        {ele.name}
       </Title>
       <PanelDescription>
         {ele.body}
       </PanelDescription>
       <Footer>
-        <FooterName>Subsid.corp</FooterName>
+        <FooterName>{usersList[1].company.name}</FooterName>
         <FooterContractType>Corporate</FooterContractType>
-        <Date> Updated 3 days ago by John Doe</Date>
+        <Date> Updated 3 days ago {usersList[(Math.floor(Math.random() * 10 ))].name}</Date>
       </Footer>
     </WorkPanel>
   ))
-
+  
   return (
     <Wrapper>
       <Header>Resume you work</Header>
@@ -111,7 +119,7 @@ const ResumeYouWork = () => {
       <PaginationConteiner>
             <Pagination
                activePage={ activePage }
-               itemsCountPerPage={ 3 }
+               itemsCountPerPage={ 10 }
                totalItemsCount={ data.length }
                pageRangeDisplayed={ 3 }
                onChange={ handlePageChange }

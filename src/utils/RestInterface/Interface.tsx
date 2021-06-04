@@ -7,10 +7,11 @@ export interface IComment {
 }
 
 export interface IWorkspace {
-    userID: number,
+    postID: number,
     id: number,
-    title: string,
-    body: string,
+    name: string,
+    email: string,
+    body: string
 }
 
 export interface ICompany {
@@ -48,4 +49,11 @@ export interface IAddress {
         lat: string,
         lng: string
     }
+}
+
+export interface ILatestPublicationPost { 
+    userID: number,
+    id: number,
+    title: string,
+    body: string
 }

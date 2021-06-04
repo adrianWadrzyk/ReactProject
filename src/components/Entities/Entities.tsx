@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import EnitiesTale from './EntitiesTale';
+
 
 const Wrapper = styled.div`
     background-color: #dfd5d5;
@@ -10,9 +12,7 @@ const Wrapper = styled.div`
 const Entities = () => { 
     return(
         <Wrapper>
-            <div>
-                jakiś tam tekst
-            </div>
+            <EnitiesTale></EnitiesTale>
         </Wrapper>
     )
 }

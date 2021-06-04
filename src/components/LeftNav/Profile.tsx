@@ -5,6 +5,8 @@ import { useParams } from 'react-router';
 import { getUser, getUsers } from '../../actions/userActions';
 import { IState } from '../../reducers';
 import { IUserReducer } from '../../reducers/userReducers';
+import { getPhoto, getPhotos } from '../../actions/photosAction';
+import { IPhotoReducer } from '../../reducers/photosReducers';
 
 const Wrapper = styled.div `
     width: 100%;
@@ -32,6 +34,7 @@ const JobTitle = styled.h4``;
 
 type GetUser = ReturnType<typeof getUser>
 type GetUsers = ReturnType<typeof getUsers>
+type GetPhoto = ReturnType<typeof getPhoto>
 
 type PostParams = { 
     id: string;
@@ -44,15 +47,23 @@ const Profile = () => {
         dispatch<GetUser>(getUser("1"));
        }, []);
 
+    useEffect(() => {
+        dispatch<GetPhoto>(getPhoto(1))
+      }, []);
+
     const rec = useSelector<IState, IUserReducer> (state => ({
         ...state.users
     }));
+    const photos = useSelector<IState,IPhotoReducer> (state =>({
+        ...state.photos
+    }))
 
     const data = rec.user;
+    const photo = photos.photo;
 
     return (
         <Wrapper>
-                <Avatar alt="avatar" src="./media/profile.png"></Avatar>
+                <Avatar alt="avatar" src={`${photo.url}`}></Avatar>
                 <FullName>{data.name} {data.username}</FullName>
                 <JobTitle>{data.company.name}</JobTitle>
         </Wrapper>        

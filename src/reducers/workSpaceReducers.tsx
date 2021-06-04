@@ -6,7 +6,6 @@ export interface IWorkspaceReducer {
     postList: IWorkspace[];
 }
 
-
 const defaultState = () : IWorkspaceReducer => ({
     postList: []
 })
@@ -20,6 +19,13 @@ export default (state = defaultState(), action: any) => {
                 postList: data.postList
             }
         } 
+        case actionTypes.GET_POST: { 
+            const data: actionTypes.IPostsType['GET_POST'] = action;
+            return{
+                ...state,
+                post: data.post
+            }
+        }
         default:
             return state;
     }
