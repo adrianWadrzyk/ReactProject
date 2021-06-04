@@ -2,41 +2,50 @@ import styled from 'styled-components';
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { IUserReducer } from '../../reducers/userReducers';
+import { IFakeCompanyReducer } from '../../reducers/fakeCompaniesReducer';
 import { IState } from '../../reducers';
 import { IPhotoReducer } from '../../reducers/photosReducers';
+
 import { getPhoto, getPhotos } from '../../actions/photosAction';
+import { getFakeCompany } from '../../actions/fakeCompanyActions';
+
+import { getUser, getUsers } from '../../actions/userActions';
 
 const Wrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     width: 90%;
+    margin: 0 auto;
 `;
 
 const Tale = styled.div`
     width: 300px;
     height: 150px;
     display: flex;
-    background-color: black;
-    color: white;
+    color: black;
     margin: 10px;
 `;
 
 const Photo = styled.img`
-    background-color: red;
     width:50%;
     height:100%;
 `;
 
+const SingleTale = styled.div`
+    display: flex;
+`;
+
 const Title = styled.h3`
+
 `;
 
 const RightConteiner = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    text-align: center;
+    padding: 10px;
 `;
 
 const Description = styled.p`
@@ -45,32 +54,46 @@ const Description = styled.p`
 
 type GetPhotos = ReturnType<typeof getPhotos>
 type GetPhoto = ReturnType<typeof getPhoto>
+type GetUsers = ReturnType<typeof getUsers>
+type GetFakeCopmanies = ReturnType<typeof getFakeCompany>
 
-const EntitiesTale = () => { 
+const EntitiesTale = (props: any) => { 
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch<GetPhotos>(getPhotos())
-      }, []);
+       useEffect(() => {
+        dispatch<GetFakeCopmanies>(getFakeCompany());
+       }, []);
 
-      const rec = useSelector<IState, IPhotoReducer> (state => ({
-        ...state.photos
-    }));
 
-    const data = rec.photosList;
-    const slice = data.slice(0,30);
+
+    const companies = useSelector<IState, IFakeCompanyReducer> (state => ({
+        ...state.fakeCompany
+    }))
+
+    const company = companies.fakeCompanyList; 
+
+    const filtered = company.filter( e => {
+       return e.name.toLowerCase().includes(props.inputText.toLowerCase());
+    })
+
+    console.log(filtered);
+
 
     return(
         <Wrapper>
-        {slice.map(ele => (
+        {filtered.map((ele) => (
             <Tale>
-                    <Photo src={`${ele.url}`}></Photo>
+                {ele.name.toLowerCase().includes(props.inputText.toLowerCase()) && (
+                <SingleTale>
+                    <Photo src={`${ele.photo_url}`}></Photo>
                 <RightConteiner>
-                    <Title>tp kest[ urzkładow tekst</Title>
+                    <Title>{ele.name}</Title>
                     <Description>Jakiś tam opis</Description>
                 </RightConteiner>
+                </SingleTale>
+                )}
             </Tale>
-        ))
+            ))
         }
     </Wrapper>
     )
