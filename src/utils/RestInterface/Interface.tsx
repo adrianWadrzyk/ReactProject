@@ -57,3 +57,10 @@ export interface ILatestPublicationPost {
     title: string,
     body: string
 }
+
+export interface IFakeCompany { 
+    id: number,
+    name: string,
+    address: string,
+    photo_url: string
+}

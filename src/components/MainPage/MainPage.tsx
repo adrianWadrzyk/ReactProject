@@ -19,7 +19,6 @@ const Wrapper = styled.div`
 
 const Content = styled.div`
     padding: 20px 10px;
-    width: 100vw;
     display: grid;
     grid-template-columns: 20% 80%;
 `;
