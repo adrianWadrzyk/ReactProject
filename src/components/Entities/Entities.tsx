@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import styled from 'styled-components';
+import EntitiesFilters from './EntitiesFilters';
 import EnitiesTale from './EntitiesTale';
-
 
 const Wrapper = styled.div`
     background-color: #dfd5d5;
@@ -13,7 +13,6 @@ const Wrapper = styled.div`
 const TopBar = styled.div`
     padding: 10px 10px;
     width: 100%;
-    background-color: red;
 `;
 
 const Filters = styled.div`
@@ -53,21 +52,49 @@ const RightFilter = styled.div`
     }
 `;
 
+const CustomSelect = styled.select``;
+
 const Entities = () => { 
 
     const [inputText, setInputText] = useState<string>('');
+
     const inputHandler = (e : ChangeEvent<HTMLInputElement>) => { 
         const text =  e.target.value;
         setInputText(text);
     }
     
+    const [sort, setSort] = useState<boolean>(true);
+
+    const sortHandler = () => { 
+             setSort(!sort);
+    }
+
+    const [layout, setLayout] = useState<boolean>(true);
+
+    const layoutToggle = () => { 
+            setLayout(!layout);
+    }
+
+    const [show, setFilters] = useState<boolean>(false);
+
+    const showFilters = () => { 
+        setFilters(!show);
+    }
+
+    const [followed, setFollowed] = useState<string>("All");
+
+    const changeFollowed = (e : any) => { 
+        const text = e.target.value;
+        setFollowed(text);
+    }
+
     return(
         <Wrapper>
          <TopBar>
              <DisplayView>                
-                 <Title>Jakiś tam przykładowy tekst</Title>
+                 <Title>Entities</Title>
                 <ChangeView>
-                    <Switcher>
+                    <Switcher onClick={layoutToggle}>
                     <p>Mosaic</p>
                     </Switcher>
                     <Switcher>
@@ -75,24 +102,30 @@ const Entities = () => {
                     </Switcher>
                 </ChangeView>
              </DisplayView>
-
         <Filters>
             <LeftFilter>
                 <p>All</p>
                 <p>...</p>
-                <p>Sort</p>
-                <p>Filters</p>
+                <p onClick={sortHandler}>Sort</p>
+                <p onClick={showFilters}>Filters</p>
                 <p>FullScreen</p>
-                <p>Share</p>
+                <p onClick={() => {navigator.clipboard.writeText(window.location.href)}}>Share</p>
             </LeftFilter>
             <RightFilter>
                     <input type="text" value={inputText} onChange={inputHandler}></input>
-                    <p>Followed</p>
+                    <CustomSelect onChange={changeFollowed} value={followed}>
+                        <option value="All">All</option>
+                        <option value="Fallowed">Fallowed</option>
+                    </CustomSelect>
             </RightFilter>
+
         </Filters>
-            </TopBar>
+        {show  &&
+        <EntitiesFilters></EntitiesFilters>
+        }
+        </TopBar>
             
-        <EnitiesTale inputText={inputText}></EnitiesTale>
+        <EnitiesTale inputText={inputText} sortedASC={sort} followed={followed}></EnitiesTale>
         </Wrapper>
     )
 }

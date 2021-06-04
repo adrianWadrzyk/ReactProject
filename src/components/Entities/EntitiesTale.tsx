@@ -2,15 +2,11 @@ import styled from 'styled-components';
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { IUserReducer } from '../../reducers/userReducers';
 import { IFakeCompanyReducer } from '../../reducers/fakeCompaniesReducer';
 import { IState } from '../../reducers';
-import { IPhotoReducer } from '../../reducers/photosReducers';
 
-import { getPhoto, getPhotos } from '../../actions/photosAction';
 import { getFakeCompany } from '../../actions/fakeCompanyActions';
-
-import { getUser, getUsers } from '../../actions/userActions';
+import {loggedUserID}  from '../../utils/loggedUser'
 
 const Wrapper = styled.div`
     display: flex;
@@ -52,9 +48,6 @@ const Description = styled.p`
 `;
 
 
-type GetPhotos = ReturnType<typeof getPhotos>
-type GetPhoto = ReturnType<typeof getPhoto>
-type GetUsers = ReturnType<typeof getUsers>
 type GetFakeCopmanies = ReturnType<typeof getFakeCompany>
 
 const EntitiesTale = (props: any) => { 
@@ -72,8 +65,18 @@ const EntitiesTale = (props: any) => {
 
     const company = companies.fakeCompanyList; 
 
-    const filtered = company.filter( e => {
+    let filtered = company.filter( e => {
        return e.name.toLowerCase().includes(props.inputText.toLowerCase());
+    })
+
+    if(props.sortedASC)
+         filtered.sort((a, b) => (a.name < b.name ? -1 : 1))
+    else 
+         filtered.sort((a, b) => (a.name > b.name ? -1 : 1))
+
+    if(props.followed == "Fallowed")
+    filtered = filtered.filter(e => {
+        return e.userID == loggedUserID;
     })
 
     console.log(filtered);

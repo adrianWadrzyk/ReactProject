@@ -15,7 +15,8 @@ export  const getFakeCompany =  (): Promise<IFakeCompany[]> => ( async (dispatch
         id: i,
         address: `${user.address.city}`,
         name: user.company.name,
-        photo_url: photos[i].url
+        photo_url: photos[i].url,
+        userID: user.id
         }
         return newAddress;
     })

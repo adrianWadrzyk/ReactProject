@@ -62,5 +62,6 @@ export interface IFakeCompany {
     id: number,
     name: string,
     address: string,
-    photo_url: string
+    photo_url: string,
+    userID: number
 }
