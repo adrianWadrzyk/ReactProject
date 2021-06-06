@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Pagination from 'react-js-pagination';
 
@@ -9,12 +9,14 @@ import { IUserReducer } from '../../reducers/userReducers';
 import styled from "styled-components"; 
 import { getPosts } from "../../actions/workSpaceActions";
 import { getUser, getUsers } from '../../actions/userActions';
-
+import {loggedUserID} from '../../utils/loggedUser';
 
 const Wrapper = styled.div``;
 
-const Header = styled.h2`
+const Header = styled.div`
     padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
 `;
 
 const WorkPanel = styled.div`
@@ -59,6 +61,7 @@ const PaginationConteiner = styled.div`
     color: black;
   }
 `
+const CustomSelect = styled.select``;
 
 const Date = styled.p``;
 
@@ -81,7 +84,32 @@ const ResumeYouWork = () => {
       ...state.users
   }))
 
-  const data = posts.postList;
+  const [inputText, setInputText] = useState<string>('');
+
+  const inputHandler = (e : ChangeEvent<HTMLInputElement>) => { 
+      const text =  e.target.value;
+      setInputText(text);
+  }
+  
+  const [followed, setFollowed] = useState<string>("All");
+
+  const changeFollowed = (e : any) => { 
+      const text = e.target.value;
+      setFollowed(text);
+  }
+
+  let data = posts.postList;
+
+  data = data.filter(e => { 
+        return e.name.includes(inputText);
+  })
+  
+  if(followed == "Fallowed") {
+    data = data.filter(e => { 
+      return e.id == loggedUserID
+    })
+  };
+    
   const usersList = users.userList;
   const panelPerPage = 10;
   const [activePage, setCurrentPage] = useState(1);
@@ -94,6 +122,8 @@ const ResumeYouWork = () => {
     const handlePageChange = ( pageNumber : any ) => {
       setCurrentPage( pageNumber )
    };
+    
+
 
   const renderWorkPanels = currentPosts.map(ele => (
       <WorkPanel>
@@ -113,7 +143,17 @@ const ResumeYouWork = () => {
   
   return (
     <Wrapper>
-      <Header>Resume you work</Header>
+    
+      <Header>
+      Resume you work
+      <div>
+        <input type="text" value={inputText} onChange={inputHandler}></input>
+            <CustomSelect onChange={changeFollowed} value={followed}>
+                <option value="All">All</option>
+                <option value="Fallowed">Fallowed</option>
+              </CustomSelect>
+      </div>
+      </Header>
        {renderWorkPanels}
 
       <PaginationConteiner>
