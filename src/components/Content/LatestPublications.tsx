@@ -13,17 +13,16 @@ import { IState } from '../../reducers';
 
 
 const Conteiner = styled.div`
-    height:100%;
     font-size: 0.8em;
     display: flex;
     background-color: wheat;
+    height: 40vh;
 `;
 
 const authorNewest = "authorNewest";
 
 const NewestPublication = styled.div`
     width:40%;
-    height:inherit;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -96,7 +95,7 @@ const LatestPublications = () => {
 
     const temp = publications.publicationsList[0];
     const user = users.userList;
-
+    
     return(
       <Conteiner>
           <NewestPublication>

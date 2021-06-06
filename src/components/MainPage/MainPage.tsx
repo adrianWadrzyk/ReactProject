@@ -11,10 +11,10 @@ import {store} from '../../store';
 import {Provider} from 'react-redux';
 
 const Wrapper = styled.div`
-    background-color: #dfd5d5;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
+    background-color: #dfd5d5;
 `;
 
 const Content = styled.div`
