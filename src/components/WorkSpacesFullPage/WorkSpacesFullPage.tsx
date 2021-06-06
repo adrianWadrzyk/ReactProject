@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import CorporateHodlings from './CorporateHodlings';
 import CorporateWorking from './CorporateWorking';
+import NavbarWorkspaces from './NavbarWorkspaces';
+import ResumeYouWork from '../Content//Resume you work';
 
 const MainWrapper = styled.section`
 `;
@@ -14,6 +16,8 @@ class WorkSpacesFullPage extends React.Component {
             <MainWrapper>
                 <CorporateHodlings></CorporateHodlings>
                 <CorporateWorking></CorporateWorking>
+                <NavbarWorkspaces></NavbarWorkspaces>
+                <ResumeYouWork></ResumeYouWork>
             </MainWrapper>
         )
     }
