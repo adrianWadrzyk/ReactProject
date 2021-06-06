@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Pagination from 'react-js-pagination';
 
@@ -9,20 +9,13 @@ import { IUserReducer } from '../../reducers/userReducers';
 import styled from "styled-components"; 
 import { getPosts } from "../../actions/workSpaceActions";
 import { getUser, getUsers } from '../../actions/userActions';
-import {loggedUserID}  from '../../utils/loggedUser'
+
 
 const Wrapper = styled.div``;
 
-const Header = styled.div`
+const Header = styled.h2`
     padding: 10px 0;
-    display: flex;
-    justify-content: space-between;
 `;
-
-const Filters = styled.div``;
-
-const SectionTitle = styled.h2``;
-
 
 const WorkPanel = styled.div`
   border-bottom: 2px solid black;
@@ -67,9 +60,6 @@ const PaginationConteiner = styled.div`
   }
 `
 
-const CustomSelect = styled.select``;
-
-
 const Date = styled.p``;
 
 type GetPosts = ReturnType<typeof getPosts>
@@ -91,31 +81,7 @@ const ResumeYouWork = () => {
       ...state.users
   }))
 
-  const [inputText, setInputText] = useState<string>('');
-
-  const inputHandler = (e : ChangeEvent<HTMLInputElement>) => { 
-      const text =  e.target.value;
-      setInputText(text);
-  }
-
-  let data = posts.postList.filter(e => { 
-    return e.name.includes(inputText);
-  })
-
- 
-  const [followed, setFollowed] = useState<string>("All");
-
-  if(followed != "All") {
-    data = data.filter(e => { return e.postId == loggedUserID; })  
-  }
-  console.log(posts.postList);
-
-  const changeFollowed = (e : any) => { 
-      const text = e.target.value;
-      setFollowed(text);
-  }
-
-
+  const data = posts.postList;
   const usersList = users.userList;
   const panelPerPage = 10;
   const [activePage, setCurrentPage] = useState(1);
@@ -129,9 +95,8 @@ const ResumeYouWork = () => {
       setCurrentPage( pageNumber )
    };
 
-  console.log(data);
-  let renderWorkPanels = currentPosts.map(ele => (
-    <WorkPanel>
+  const renderWorkPanels = currentPosts.map(ele => (
+      <WorkPanel>
       <Title>
         {ele.name}
       </Title>
@@ -141,26 +106,14 @@ const ResumeYouWork = () => {
       <Footer>
         <FooterName>{usersList[1].company.name}</FooterName>
         <FooterContractType>Corporate</FooterContractType>
-        <Date> Updated 3 days ago {usersList[(Math.floor(Math.random() * 9 ))].name}</Date>
+        <Date> Updated 3 days ago {usersList[(Math.floor(Math.random() * 10 ))].name}</Date>
       </Footer>
     </WorkPanel>
   ))
   
-  
   return (
     <Wrapper>
-      <Header>
-      <SectionTitle>
-        Resume you work
-      </SectionTitle>
-      <Filters>
-        <input type="text" value={inputText} onChange={inputHandler}></input>   
-        <CustomSelect onChange={changeFollowed} value={followed}>
-                        <option value="All">All</option>
-                        <option value="Fallowed">Fallowed</option>
-                    </CustomSelect>
-      </Filters>
-       </Header>
+      <Header>Resume you work</Header>
        {renderWorkPanels}
 
       <PaginationConteiner>

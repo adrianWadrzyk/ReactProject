@@ -7,7 +7,7 @@ export interface IComment {
 }
 
 export interface IWorkspace {
-    postId: number,
+    postID: number,
     id: number,
     name: string,
     email: string,
