@@ -6,7 +6,7 @@ import TopBar from '../TopBar/TopBar';
 import LeftNav from '../LeftNav/LeftNav';
 import ContentWrapper from '../Content/ContentWrapper';
 import Entities from '../Entities/Entities';
-
+import WorkSpacesFullPage from '../WorkSpacesFullPage/WorkSpacesFullPage'
 import {store} from '../../store';
 import {Provider} from 'react-redux';
 
@@ -33,6 +33,7 @@ const MainPage = () => {
                     <LeftNav />
                     <Route exact path="/" component={ContentWrapper} />
                     <Route path="/entities" component={Entities} />
+                    <Route path="/corporation" component={WorkSpacesFullPage}></Route>
                 </Content>
             </Wrapper>
         </Router>
