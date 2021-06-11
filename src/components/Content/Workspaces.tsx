@@ -1,4 +1,9 @@
 import styled from 'styled-components';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import 'swiper/swiper.scss';
+
 
 const Wrapper = styled.div`
     background-color: red;
@@ -11,7 +16,6 @@ const Header = styled.h2`
 `;
 
 const SingleContainer = styled.div`
-    width: 30%;
     height:250px;
     background-color: yellow;
     display: flex;
@@ -25,9 +29,7 @@ const Photo = styled.div`
     background-color: black;
 `;
 
-const ContractName = styled.h3`
-
-`;
+const ContractName = styled.h3``;
 
 const ContractIcon = styled.img`
     width: 20%;
@@ -58,30 +60,96 @@ const Workspaces = () => {
     return (
         <Wrapper>
             <Header>Workspaces</Header>
-            <SingleContainer>
-                <Photo> Zdjęcie</Photo>
-                <InsideWrapper>
-                    <ContractIcon src="./media/administration.png"></ContractIcon>
-                    <ContractName>Client contract</ContractName>
-                </InsideWrapper>
-                <Fotter>
-                    <p>Contract</p>
-                    <p>150 users</p>
-                    <LatestUpdate>Latest update 2 day ago</LatestUpdate>
-                </Fotter>
-            </SingleContainer>
-            <SingleContainer>
-                <Photo> Zdjęcie</Photo>
-                <InsideWrapper>
-                    <ContractIcon src="./media/administration.png"></ContractIcon>
-                    <ContractName>Client contract</ContractName>
-                </InsideWrapper>
-                <Fotter>
-                    <p>Contract</p>
-                    <p>150 users</p>
-                    <LatestUpdate>Latest update 2 day ago</LatestUpdate>
-                </Fotter>
-            </SingleContainer>
+
+            <Swiper 
+             spaceBetween={50}
+             slidesPerView={3}
+            >
+                  <SwiperSlide>
+                  <SingleContainer>
+                    <Photo> Zdjęcie</Photo>
+                    <InsideWrapper>
+                        <ContractIcon src="./media/administration.png"></ContractIcon>
+                        <ContractName>Client contract</ContractName>
+                    </InsideWrapper>
+                    <Fotter>
+                        <p>Contract</p>
+                        <p>150 users</p>
+                        <LatestUpdate>Latest update 2 day ago</LatestUpdate>
+                    </Fotter>
+                 </SingleContainer>
+                  </SwiperSlide>
+                  <SwiperSlide>
+                  <SingleContainer>
+                    <Photo> Zdjęcie</Photo>
+                    <InsideWrapper>
+                        <ContractIcon src="./media/administration.png"></ContractIcon>
+                        <ContractName>Client contract</ContractName>
+                    </InsideWrapper>
+                    <Fotter>
+                        <p>Contract</p>
+                        <p>150 users</p>
+                        <LatestUpdate>Latest update 2 day ago</LatestUpdate>
+                    </Fotter>
+                 </SingleContainer>
+                  </SwiperSlide>
+                <SwiperSlide>
+                  <SingleContainer>
+                    <Photo> Zdjęcie</Photo>
+                    <InsideWrapper>
+                        <ContractIcon src="./media/administration.png"></ContractIcon>
+                        <ContractName>Client contract</ContractName>
+                    </InsideWrapper>
+                    <Fotter>
+                        <p>Contract</p>
+                        <p>150 users</p>
+                        <LatestUpdate>Latest update 2 day ago</LatestUpdate>
+                    </Fotter>
+                 </SingleContainer>
+                  </SwiperSlide>
+                  <SwiperSlide>
+                  <SingleContainer>
+                    <Photo> Zdjęcie</Photo>
+                    <InsideWrapper>
+                        <ContractIcon src="./media/administration.png"></ContractIcon>
+                        <ContractName>Client contract</ContractName>
+                    </InsideWrapper>
+                    <Fotter>
+                        <p>Contract</p>
+                        <p>150 users</p>
+                        <LatestUpdate>Latest update 2 day ago</LatestUpdate>
+                    </Fotter>
+                 </SingleContainer>
+                  </SwiperSlide>
+                  <SwiperSlide>
+                  <SingleContainer>
+                    <Photo> Zdjęcie</Photo>
+                    <InsideWrapper>
+                        <ContractIcon src="./media/administration.png"></ContractIcon>
+                        <ContractName>Client contract</ContractName>
+                    </InsideWrapper>
+                    <Fotter>
+                        <p>Contract</p>
+                        <p>150 users</p>
+                        <LatestUpdate>Latest update 2 day ago</LatestUpdate>
+                    </Fotter>
+                 </SingleContainer>
+                  </SwiperSlide>
+                  <SwiperSlide>
+                  <SingleContainer>
+                    <Photo> Zdjęcie</Photo>
+                    <InsideWrapper>
+                        <ContractIcon src="./media/administration.png"></ContractIcon>
+                        <ContractName>Client contract</ContractName>
+                    </InsideWrapper>
+                    <Fotter>
+                        <p>Contract</p>
+                        <p>150 users</p>
+                        <LatestUpdate>Latest update 2 day ago</LatestUpdate>
+                    </Fotter>
+                 </SingleContainer>
+                  </SwiperSlide>
+            </Swiper>
         </Wrapper>
     );
 };
