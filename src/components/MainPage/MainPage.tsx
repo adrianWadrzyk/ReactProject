@@ -15,12 +15,14 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
+    min-height: 100vh;
 `;
 
 const Content = styled.div`
     padding: 20px 10px;
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 20% 75%;
+    justify-content: center;
 `;
 
 const MainPage = () => { 

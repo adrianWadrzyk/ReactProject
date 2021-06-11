@@ -16,7 +16,7 @@ const Conteiner = styled.div`
     height:100%;
     font-size: 0.8em;
     display: flex;
-    background-color: wheat;
+    background-color: #eea111;
 `;
 
 const authorNewest = "authorNewest";
@@ -113,7 +113,15 @@ const LatestPublications = () => {
                  <PublicationDescription></PublicationDescription>
                  <Author> January 25 Janik</Author>
              </Publication>
-   
+             <Publication>
+                 <PublicationPhoto id={1}></PublicationPhoto>
+                 <PublicationDescription></PublicationDescription>
+                 <Author> January 25 Janik</Author>
+             </Publication>     <Publication>
+                 <PublicationPhoto id={1}></PublicationPhoto>
+                 <PublicationDescription></PublicationDescription>
+                 <Author> January 25 Janik</Author>
+             </Publication>
           </RightConteinerPublications>
       </Conteiner>
     )

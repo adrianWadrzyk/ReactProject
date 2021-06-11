@@ -4,7 +4,6 @@ import EntitiesFilters from './EntitiesFilters';
 import EnitiesTale from './EntitiesTale';
 
 const Wrapper = styled.div`
-    background-color: #dfd5d5;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
