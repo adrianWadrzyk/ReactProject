@@ -32,44 +32,51 @@ const NewestPublication = styled.div`
     & .${authorNewest} {
         padding-top: 20px;
     }
-    border-right: 1px solid black;
 `;
 
 const RightConteinerPublications = styled.div`
     width: 60%;
     padding: 10px 10px;
-    display: flex;
-    flex-direction:  column;
-    justify-content: space-between;
+    
 `;
 
 const Header = styled.header`
     color: black;
+    font-size: 1.2em;
+`;
+
+const PublicationsConteiner = styled.div`
+    margin-top: 10px;
+    background-color: yellow;
+    display: flex;
+    flex-direction: column;
 `;
 
 const Publication = styled.div`
     color: black;
-    display: grid;
-    grid-template-areas: "photo description" 
-                         "photo author";
-    grid-template-columns: 20% 70%;
+    display: flex;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: center;
-    height: 25%;
+    margin: 10px 0;
+`;
+
+const InnerWrapper = styled.div`
+    padding: 10px;
 `;
 
 const PublicationDescription = styled.p`
     color: black;
     line-height: 1.2em;
-    grid-area: description;
-`;
-
-const PublicationFooter = styled.footer`
-    color: black;
 `;
 
 const Author = styled.div`
-    grid: author;
+    margin-top: 20px;
+`;
+
+const SeeMore = styled.p`
+    font-size: 1.1em;
+    margin-top: 5px;
+    text-align: right;
 `;
 
 type GetUsers = ReturnType<typeof getUsers>
@@ -104,24 +111,46 @@ const LatestPublications = () => {
             <Author className={authorNewest}> January 25 </Author>
           </NewestPublication>
           <RightConteinerPublications>
+
             <Header>
                 Latest publications
             </Header>
-            
+
+            <PublicationsConteiner>
              <Publication>
                  <PublicationPhoto id={1}></PublicationPhoto>
-                 <PublicationDescription></PublicationDescription>
-                 <Author> January 25 Janik</Author>
+                 <InnerWrapper>
+                    <PublicationDescription>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis sint eveniet dolor nobis 
+                        modi nemo minus iusto maiores quas eligendi numquam voluptate iste harum
+                    </PublicationDescription>
+                    <Author> January 25 Janik</Author>
+                 </InnerWrapper>
              </Publication>
              <Publication>
                  <PublicationPhoto id={1}></PublicationPhoto>
-                 <PublicationDescription></PublicationDescription>
-                 <Author> January 25 Janik</Author>
-             </Publication>     <Publication>
-                 <PublicationPhoto id={1}></PublicationPhoto>
-                 <PublicationDescription></PublicationDescription>
-                 <Author> January 25 Janik</Author>
+                 <InnerWrapper>
+                    <PublicationDescription>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis sint eveniet dolor nobis 
+                        modi nemo minus iusto maiores quas eligendi numquam voluptate iste harum
+                    </PublicationDescription>
+                    <Author> January 25 Janik</Author>
+                 </InnerWrapper>
              </Publication>
+             <Publication>
+                 <PublicationPhoto id={1}></PublicationPhoto>
+                 <InnerWrapper>
+                    <PublicationDescription>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis sint eveniet dolor nobis 
+                        modi nemo minus iusto maiores quas eligendi numquam voluptate iste harum
+                    </PublicationDescription>
+                    <Author> January 25 Janik</Author>
+                 </InnerWrapper>
+             </Publication>
+     
+     
+            </PublicationsConteiner>
+            <SeeMore>See more publications...</SeeMore>
           </RightConteinerPublications>
       </Conteiner>
     )

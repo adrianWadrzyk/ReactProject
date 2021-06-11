@@ -8,12 +8,11 @@ import { getPhoto, getPhotos } from '../../actions/photosAction';
 
 
 const Photo = styled.img`
-width: 70%;
-height:50%;
-grid-area: photo;
+    width: 10%;
+    height: 10%;
+    margin: 0 20px;
 `;
 
-type GetPhotos = ReturnType<typeof getPhotos>
 type GetPhoto = ReturnType<typeof getPhoto>
 
 const PublicationPhoto =  (props :any) => { 
