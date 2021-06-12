@@ -20,18 +20,25 @@ const Conteiner = styled.div`
 `;
 
 const authorNewest = "authorNewest";
+const newestDecription = "newestDescription";
 
 const NewestPublication = styled.div`
     width:40%;
-    height:inherit;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    align-items: flex-start;
     padding: 10px 20px;
+
     & .${authorNewest} {
-        padding-top: 20px;
+        font-size: 1em;
     }
+
+    & .${newestDecription} {
+        font-size: 1.2em;
+        line-height: 1.5em;
+    }
+
 `;
 
 const RightConteinerPublications = styled.div`
@@ -101,14 +108,14 @@ const LatestPublications = () => {
         ...state.latesPublications
     }))
 
-    const temp = publications.publicationsList[0];
-    const user = users.userList;
-
     return(
       <Conteiner>
           <NewestPublication>
-            <PublicationDescription></PublicationDescription>
-            <Author className={authorNewest}> January 25 </Author>
+            <PublicationDescription className='newestDescription'>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis sint eveniet dolor nobis 
+                        modi nemo minus iusto maiores quas eligendi numquam voluptate iste harum
+            </PublicationDescription>
+            <Author className='authorNewest'> January 25 </Author>
           </NewestPublication>
           <RightConteinerPublications>
 
