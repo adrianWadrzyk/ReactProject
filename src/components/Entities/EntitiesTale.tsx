@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IFakeCompanyReducer } from '../../reducers/fakeCompaniesReducer';
 import { IState } from '../../reducers';
@@ -13,8 +13,7 @@ const Wrapper = styled.div<{active: boolean}>`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 90%;
-    margin: 0 auto;
+    width: 100%;
 `
 
 const Tale = styled.div<{active: boolean}>`
