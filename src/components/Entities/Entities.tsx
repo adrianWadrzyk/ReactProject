@@ -3,11 +3,15 @@ import styled from 'styled-components';
 import EntitiesFilters from './EntitiesFilters';
 import EnitiesTale from './EntitiesTale';
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{fullScreen : boolean}>`
     background-color: #dfd5d5;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
+    width: ${({fullScreen}) => (fullScreen? '100%': 'auto')};
+    position: ${({fullScreen}) => (fullScreen? 'absolute': 'static')};
+    top: 0;
+    left: 0;
 `;
 
 const TopBar = styled.div`
@@ -42,6 +46,11 @@ const LeftFilter = styled.div`
     & > p { 
         margin: 0 10px;
     }
+
+    & > p:hover { 
+        cursor: pointer;
+        font-weight: bold;
+    }
 `;
 
 const RightFilter = styled.div`
@@ -64,41 +73,48 @@ const Entities = () => {
     }
     
     const [sort, setSort] = useState<boolean>(true);
-
     const sortHandler = () => { 
              setSort(!sort);
     }
 
     const [layout, setLayout] = useState<boolean>(true);
-
-    const layoutToggle = () => { 
-            setLayout(!layout);
+    const layoutToggle = (e: any) => {
+            const text = e.target.innerText;
+            if(text == "Mosaic")
+                setLayout(false);
+            else 
+                setLayout(true);
     }
 
     const [show, setFilters] = useState<boolean>(false);
-
     const showFilters = () => { 
         setFilters(!show);
     }
 
-    const [followed, setFollowed] = useState<string>("All");
+    const [fullScreen, setFullscrean] = useState<boolean>(false);
+    const changeFullScreen = () => { 
+        setFullscrean(!fullScreen);
+    }
 
+    const [followed, setFollowed] = useState<string>("All");
     const changeFollowed = (e : any) => { 
         const text = e.target.value;
         setFollowed(text);
     }
 
+
+
     return(
-        <Wrapper>
+        <Wrapper fullScreen={fullScreen}>
          <TopBar>
              <DisplayView>                
                  <Title>Entities</Title>
                 <ChangeView>
-                    <Switcher onClick={layoutToggle}>
-                    <p>Mosaic</p>
+                    <Switcher >
+                    <p onClick={layoutToggle}>Mosaic</p>
                     </Switcher>
                     <Switcher>
-                    <p>List</p>
+                    <p onClick={layoutToggle}>List</p>
                     </Switcher>
                 </ChangeView>
              </DisplayView>
@@ -108,7 +124,7 @@ const Entities = () => {
                 <p>...</p>
                 <p onClick={sortHandler}>Sort</p>
                 <p onClick={showFilters}>Filters</p>
-                <p>FullScreen</p>
+                <p onClick={changeFullScreen}>{fullScreen ? "Out Full Screen" : "Full Screen" }</p>
                 <p onClick={() => {navigator.clipboard.writeText(window.location.href)}}>Share</p>
             </LeftFilter>
             <RightFilter>
@@ -125,7 +141,7 @@ const Entities = () => {
         }
         </TopBar>
             
-        <EnitiesTale inputText={inputText} sortedASC={sort} followed={followed}></EnitiesTale>
+        <EnitiesTale inputText={inputText} sortedASC={sort} followed={followed} view={layout}></EnitiesTale>
         </Wrapper>
     )
 }

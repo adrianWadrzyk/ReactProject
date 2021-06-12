@@ -8,33 +8,35 @@ import { IState } from '../../reducers';
 import { getFakeCompany } from '../../actions/fakeCompanyActions';
 import {loggedUserID}  from '../../utils/loggedUser'
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{active: boolean}>`
+    flex-direction: ${({active}) => (active? 'column': 'row')};
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     width: 90%;
     margin: 0 auto;
-`;
+`
 
-const Tale = styled.div`
-    width: 300px;
-    height: 150px;
+const Tale = styled.div<{active: boolean}>`
+    width: ${({active}) => (active? '100%': '30%')};    
+    height: auto;
     display: flex;
     color: black;
     margin: 10px;
 `;
 
-const Photo = styled.img`
-    width:50%;
+const Photo = styled.img<{active: boolean}>`
+    width: ${({active}) => (active? '15%': '45%')};    height: auto;
     height:100%;
 `;
 
 const SingleTale = styled.div`
     display: flex;
+    width: 100%;
 `;
 
 const Title = styled.h3`
-
+    margin: 10px 0;
 `;
 
 const RightConteiner = styled.div`
@@ -45,6 +47,8 @@ const RightConteiner = styled.div`
 `;
 
 const Description = styled.p`
+    font-size: 0.9em;
+    line-height: 1.2em;
 `;
 
 
@@ -56,7 +60,6 @@ const EntitiesTale = (props: any) => {
        useEffect(() => {
         dispatch<GetFakeCopmanies>(getFakeCompany());
        }, []);
-
 
 
     const companies = useSelector<IState, IFakeCompanyReducer> (state => ({
@@ -79,19 +82,16 @@ const EntitiesTale = (props: any) => {
         return e.userID == loggedUserID;
     })
 
-    console.log(filtered);
-
-
     return(
-        <Wrapper>
+        <Wrapper active={props.view}>
         {filtered.map((ele) => (
-            <Tale>
+            <Tale active={props.view}>
                 {ele.name.toLowerCase().includes(props.inputText.toLowerCase()) && (
                 <SingleTale>
-                    <Photo src={`${ele.photo_url}`}></Photo>
+                    <Photo active={props.view} src={`${ele.photo_url}`}></Photo>
                 <RightConteiner>
                     <Title>{ele.name}</Title>
-                    <Description>Jakiś tam opis</Description>
+                    <Description>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab eveniet natus, expedita laborum!</Description>
                 </RightConteiner>
                 </SingleTale>
                 )}
