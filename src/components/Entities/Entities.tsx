@@ -12,6 +12,7 @@ const Wrapper = styled.div<{fullScreen : boolean}>`
     flex-wrap: nowrap;
     width: ${({fullScreen}) => (fullScreen? '100%': 'auto')};
     position: ${({fullScreen}) => (fullScreen? 'absolute': 'static')};
+    padding: ${({fullScreen}) => (fullScreen? '20px': '0')};
     top: 0;
     left: 0;
 `;
