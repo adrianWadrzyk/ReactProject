@@ -7,6 +7,7 @@ import { IState } from '../../reducers';
 import { IUserReducer } from '../../reducers/userReducers';
 import { getPhoto, getPhotos } from '../../actions/photosAction';
 import { IPhotoReducer } from '../../reducers/photosReducers';
+import { Colors } from '../../styledHelpers/colorsUtils';
 
 const Wrapper = styled.div `
     width: 100%;
@@ -27,7 +28,7 @@ const Avatar = styled.img`
 `;
 
 const FullName = styled.h2`
-    color: #4ca1e6;
+    color: ${Colors.blue};
 `;
 
 const JobTitle = styled.h4``;

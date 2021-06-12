@@ -2,6 +2,8 @@ import styled from 'styled-components';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useHistory } from 'react-router-dom';
+import { Colors } from '../../styledHelpers/colorsUtils';
+import { fontSize } from '../../styledHelpers/fontUtils';
 
 import 'swiper/swiper.scss';
 
@@ -16,7 +18,7 @@ const Header = styled.h2`
     height: 30px;
     line-height: 30px;
     margin: 10px 0px 0;
-    font-size: 1.2em;
+    font-size: ${fontSize.sectionTitle};
 `;
 
 const SingleContainer = styled.div`
@@ -51,7 +53,7 @@ const InsideWrapper = styled.div`
     width: 70%;
     margin: 10px auto;
     justify-content: space-around;
-    color: black;
+    color: ${Colors.textBlack};
     align-items: center;
 `;
 

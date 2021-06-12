@@ -2,6 +2,8 @@ import { ChangeEvent, useState } from 'react';
 import styled from 'styled-components';
 import EntitiesFilters from './EntitiesFilters';
 import EnitiesTale from './EntitiesTale';
+import { Colors } from '../../styledHelpers/colorsUtils';
+import { fontSize } from '../../styledHelpers/fontUtils';
 
 const Wrapper = styled.div<{fullScreen : boolean}>`
     background-color: #dfd5d5;
@@ -17,6 +19,7 @@ const Wrapper = styled.div<{fullScreen : boolean}>`
 const TopBar = styled.div`
     padding: 10px 10px;
     width: 100%;
+    font-size: ${fontSize.mediumText};
 `;
 
 const Filters = styled.div`
@@ -30,7 +33,10 @@ const DisplayView = styled.div`
     justify-content: space-between;
 `;
 
-const Title = styled.div``;
+const Title = styled.div`
+    color: ${Colors.titleColor};
+    font-size: ${fontSize.sectionTitle};
+`;
 
 const Switcher = styled.div`
     margin: 0 20px;
@@ -42,9 +48,9 @@ const ChangeView = styled.div`
 
 const LeftFilter = styled.div`
     display: flex;
-
+    
     & > p { 
-        margin: 0 10px;
+        margin-right:20px;
     }
 
     & > p:hover { 

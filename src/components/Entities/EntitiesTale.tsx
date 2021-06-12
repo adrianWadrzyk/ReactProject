@@ -7,6 +7,8 @@ import { IState } from '../../reducers';
 
 import { getFakeCompany } from '../../actions/fakeCompanyActions';
 import {loggedUserID}  from '../../utils/loggedUser'
+import { Colors } from '../../styledHelpers/colorsUtils';
+import { fontSize } from '../../styledHelpers/fontUtils';
 
 const Wrapper = styled.div<{active: boolean}>`
     flex-direction: ${({active}) => (active? 'column': 'row')};
@@ -20,7 +22,7 @@ const Tale = styled.div<{active: boolean}>`
     width: ${({active}) => (active? '100%': '30%')};    
     height: auto;
     display: flex;
-    color: black;
+    color: ${Colors.textBlack};
     margin: 10px;
 `;
 
@@ -36,6 +38,8 @@ const SingleTale = styled.div`
 
 const Title = styled.h3`
     margin: 10px 0;
+    font-size: ${fontSize.subTitle};
+    color: ${Colors.blue};
 `;
 
 const RightConteiner = styled.div`
@@ -46,7 +50,7 @@ const RightConteiner = styled.div`
 `;
 
 const Description = styled.p`
-    font-size: 0.9em;
+    font-size: ${fontSize.mediumText};
     line-height: 1.2em;
 `;
 

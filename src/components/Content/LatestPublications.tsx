@@ -10,13 +10,14 @@ import { IUserReducer } from '../../reducers/userReducers';
 import { ILatestPublicationReducer } from '../../reducers/latestPublicationsReducers';
 
 import { IState } from '../../reducers';
+import { Colors } from '../../styledHelpers/colorsUtils';
+import { fontSize } from '../../styledHelpers/fontUtils';
 
 
 const Conteiner = styled.div`
     height:100%;
-    font-size: 0.8em;
     display: flex;
-    background-color: #eea111;
+    border-bottom: 1px solid black;
 `;
 
 const authorNewest = "authorNewest";
@@ -31,11 +32,11 @@ const NewestPublication = styled.div`
     padding: 10px 20px;
 
     & .${authorNewest} {
-        font-size: 1em;
+        font-size: ${fontSize.subTitle};
     }
 
     & .${newestDecription} {
-        font-size: 1.2em;
+        font-size: ${fontSize.mediumText};
         line-height: 1.5em;
     }
 
@@ -44,27 +45,26 @@ const NewestPublication = styled.div`
 const RightConteinerPublications = styled.div`
     width: 60%;
     padding: 10px 10px;
-    
 `;
 
 const Header = styled.header`
-    color: black;
-    font-size: 1.2em;
+    color: ${Colors.textBlack};
+    font-size: ${fontSize.sectionTitle};
 `;
 
 const PublicationsConteiner = styled.div`
     margin-top: 10px;
-    background-color: yellow;
     display: flex;
     flex-direction: column;
 `;
 
 const Publication = styled.div`
-    color: black;
+    color: ${Colors.textBlack};
     display: flex;
     justify-content: flex-start;
     align-items: center;
     margin: 10px 0;
+    font-size: ${fontSize.mediumText};
 `;
 
 const InnerWrapper = styled.div`
@@ -72,7 +72,7 @@ const InnerWrapper = styled.div`
 `;
 
 const PublicationDescription = styled.p`
-    color: black;
+    color: ${Colors.textBlack};
     line-height: 1.2em;
 `;
 
@@ -81,7 +81,8 @@ const Author = styled.div`
 `;
 
 const SeeMore = styled.p`
-    font-size: 1.1em;
+    font-size: ${fontSize.mediumText};
+    color: ${Colors.blue};
     margin-top: 5px;
     text-align: right;
 `;
@@ -135,7 +136,7 @@ const LatestPublications = () => {
                  </InnerWrapper>
              </Publication>
              <Publication>
-                 <PublicationPhoto id={1}></PublicationPhoto>
+                 <PublicationPhoto id={2}></PublicationPhoto>
                  <InnerWrapper>
                     <PublicationDescription>
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis sint eveniet dolor nobis 
@@ -145,7 +146,7 @@ const LatestPublications = () => {
                  </InnerWrapper>
              </Publication>
              <Publication>
-                 <PublicationPhoto id={1}></PublicationPhoto>
+                 <PublicationPhoto id={3}></PublicationPhoto>
                  <InnerWrapper>
                     <PublicationDescription>
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis sint eveniet dolor nobis 

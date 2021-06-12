@@ -10,27 +10,32 @@ import styled from "styled-components";
 import { getPosts } from "../../actions/workSpaceActions";
 import { getUser, getUsers } from '../../actions/userActions';
 import {loggedUserID} from '../../utils/loggedUser';
+import { Colors } from '../../styledHelpers/colorsUtils';
+import { fontSize } from '../../styledHelpers/fontUtils';
 
 const Wrapper = styled.div``;
 
 const Header = styled.div`
-    padding: 10px 0;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
+    font-size: ${fontSize.sectionTitle};
 `;
 
 const WorkPanel = styled.div`
   border-bottom: 2px solid black;
   padding: 10px;
   margin-top: 5px;
-  background-color: white;
 `;
 
 const PanelDescription = styled.div`
   margin-top: 10px;
 `;
 
-const Title = styled.h3``;
+const Title = styled.h3`
+  font-size: ${fontSize.subTitle};
+  color: ${Colors.blue};
+`;
 
 const Footer = styled.footer`
   display: flex;
@@ -58,7 +63,7 @@ const PaginationConteiner = styled.div`
 
   & a { 
     text-decoration: none;
-    color: black;
+    color: ${Colors.textBlack};
   }
 `
 const CustomSelect = styled.select``;

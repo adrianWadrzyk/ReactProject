@@ -1,6 +1,4 @@
 import {BrowserRouter as Router, Route } from 'react-router-dom'; 
-
-
 import styled from 'styled-components';
 import TopBar from '../TopBar/TopBar';
 import LeftNav from '../LeftNav/LeftNav';
@@ -9,9 +7,10 @@ import Entities from '../Entities/Entities';
 import WorkSpacesFullPage from '../WorkSpacesFullPage/WorkSpacesFullPage'
 import {store} from '../../store';
 import {Provider} from 'react-redux';
+import {Colors} from '../../styledHelpers/colorsUtils';
 
 const Wrapper = styled.div`
-    background-color: #dfd5d5;
+    background-color: ${Colors.mainBackgroundColor}; ;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;

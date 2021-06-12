@@ -1,7 +1,10 @@
 import styled from 'styled-components';
+import { Colors } from '../../styledHelpers/colorsUtils';
+import { fontSize } from '../../styledHelpers/fontUtils';
 
 const Wrapper = styled.div`
     border-top: 1px solid black;
+    font-size: ${fontSize.mediumText};
 `;
 
 const Line = styled.div`
@@ -10,12 +13,12 @@ const Line = styled.div`
 `;
 
 const Cross = styled.p`
-margin: 10px;`;
+    margin: 10px;`;
 
 const CustomInput = styled.input`
-padding: 3px;
-background-color: gray;
-border: none;
+    padding: 3px;
+    background-color: ${Colors.gray};
+    border: none;
 
     &::placeholder{ 
         color: white;
@@ -23,13 +26,13 @@ border: none;
 `;
 
 const CustomSelect = styled.select`
-background-color: none;
-border: 0;
-padding: 3px;
-margin: 8px;`;
+    background-color: none;
+    border: 0;
+    padding: 3px;
+    margin: 8px;`;
 
 const FilterName = styled.p`
-margin: 10px;`;
+    margin: 10px;`;
 
 const EntitiesFilters = () => { 
     return (

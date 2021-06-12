@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { fontSize } from '../../styledHelpers/fontUtils';
 import ResumeYouWork from '../Content/Resume you work'
 const Wrapper = styled.div``;
 
@@ -18,7 +19,7 @@ const CorporateWorkingHeader = styled.h3``;
 const Hide = styled.p``;
 
 const TilesHeader = styled.p`
-    font-size: 1.2em;
+    font-size: ${fontSize.sectionTitle};
     margin: 10px 0;
 `;
 

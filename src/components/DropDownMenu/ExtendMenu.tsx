@@ -34,7 +34,6 @@ const FilterInput = styled.input`
     height: 30px;
     border: 1px solid black;
     display: flex;
-    color: grey;
 `;
 
 const Icon = styled.img`

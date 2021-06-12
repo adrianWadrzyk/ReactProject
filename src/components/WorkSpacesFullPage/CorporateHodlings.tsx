@@ -1,6 +1,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import { fontSize } from '../../styledHelpers/fontUtils';
 
 
 const CorporateHodlings = styled.div`
@@ -21,7 +22,7 @@ const CorporateHodlingInsideWrapper = styled.div`
 `;
 
 const Title = styled.h2`
-    font-size: 1.5em;
+    font-size: ${fontSize.sectionTitle};
 `;
 
 const FirtsColumn = styled.div`
@@ -38,6 +39,8 @@ const SecondColumn = styled.div`
 
 const CorporateHodlingsDesc = styled.p`
     margin-top: 20px;
+    font-size: ${fontSize.mediumText};
+    line-height: 1.2em;
 `;
 
 const CorporateHodlingsIcon = styled.img`
