@@ -83,7 +83,7 @@ const Entities = () => {
              setSort(!sort);
     }
 
-    const [layout, setLayout] = useState<boolean>(true);
+    const [layout, setLayout] = useState<boolean>(false);
     const layoutToggle = (e: any) => {
             const text = e.target.innerText;
             if(text == "Mosaic")
