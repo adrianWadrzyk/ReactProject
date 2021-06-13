@@ -4,6 +4,9 @@ import EntitiesFilters from './EntitiesFilters';
 import EnitiesTale from './EntitiesTale';
 import { Colors } from '../../styledHelpers/colorsUtils';
 import { fontSize } from '../../styledHelpers/fontUtils';
+import SmallIcon from '../Common/SmallIcon';
+import SwitcherFallowed from '../Common/SwitcherFallowed';
+import SearchBar from '../Common/SearchBar';
 
 const Wrapper = styled.div<{fullScreen : boolean}>`
     background-color: #dfd5d5;
@@ -37,10 +40,18 @@ const DisplayView = styled.div`
 const Title = styled.div`
     color: ${Colors.titleColor};
     font-size: ${fontSize.sectionTitle};
+    padding-right: 15px;
 `;
 
 const Switcher = styled.div`
     margin: 0 20px;
+    display: flex;
+    align-items: center;
+
+    & p { 
+        padding-left: 10px;
+        cursor: pointer;
+    }
 `;
 
 const ChangeView = styled.div`
@@ -52,6 +63,7 @@ const LeftFilter = styled.div`
     
     & > p { 
         margin-right:20px;
+        padding-left: 10px;
     }
 
     & > p:hover { 
@@ -66,6 +78,11 @@ const RightFilter = styled.div`
     & > p { 
         margin: 0 20px;
     }
+`;
+
+const InnerWrapper=styled.div`
+    display: flex;
+    align-items: center;
 `;
 
 const CustomSelect = styled.select``;
@@ -114,13 +131,18 @@ const Entities = () => {
     return(
         <Wrapper fullScreen={fullScreen}>
          <TopBar>
-             <DisplayView>                
+             <DisplayView>          
+                <InnerWrapper>  
                  <Title>Entities</Title>
+                 <SmallIcon src="./media/gear.png" alt="gearIcon"/>
+                </InnerWrapper>    
                 <ChangeView>
                     <Switcher >
+                    <SmallIcon src="./media/rectangles.png" alt="rectanglesIcon"/>
                     <p onClick={layoutToggle}>Mosaic</p>
                     </Switcher>
                     <Switcher>
+                    <SmallIcon src="./media/list.png" alt="listIcon"/>
                     <p onClick={layoutToggle}>List</p>
                     </Switcher>
                 </ChangeView>
@@ -129,17 +151,18 @@ const Entities = () => {
             <LeftFilter>
                 <p>All</p>
                 <p>...</p>
+                <SmallIcon src="./media/sort.png" alt="sortIcon"/>
                 <p onClick={sortHandler}>Sort</p>
+                <SmallIcon src="./media/filter.png" alt="filtersIcon"/>
                 <p onClick={showFilters}>Filters</p>
+                <SmallIcon src="./media/full-screen.png" alt="fullScreenIcon"/>
                 <p onClick={changeFullScreen}>{fullScreen ? "Out Full Screen" : "Full Screen" }</p>
+                <SmallIcon src="./media/share.png" alt="shareIcon"/>
                 <p onClick={() => {navigator.clipboard.writeText(window.location.href)}}>Share</p>
             </LeftFilter>
             <RightFilter>
-                    <input type="text" value={inputText} onChange={inputHandler}></input>
-                    <CustomSelect onChange={changeFollowed} value={followed}>
-                        <option value="All">All</option>
-                        <option value="Fallowed">Fallowed</option>
-                    </CustomSelect>
+                    <SearchBar value={inputText} onChange={inputHandler} />
+                    <SwitcherFallowed onChange={changeFollowed} value={followed} />
             </RightFilter>
 
         </Filters>

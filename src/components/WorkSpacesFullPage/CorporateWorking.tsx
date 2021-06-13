@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Colors } from '../../styledHelpers/colorsUtils';
 import { fontSize } from '../../styledHelpers/fontUtils';
 
 const Wrapper = styled.div``;
@@ -12,9 +13,13 @@ const Tiles = styled.div`
     text-align: left;
     padding: 0 10px;
     justify-content: center;
+    background-color: white;
 `;
 
-const CorporateWorkingHeader = styled.h3``;
+const CorporateWorkingHeader = styled.h3`
+    font-size: ${fontSize.sectionTitle};
+    color: ${Colors.blue};
+`;
 
 const Hide = styled.p``;
 

@@ -13,6 +13,11 @@ import { getUser, getUsers } from '../../actions/userActions';
 import {loggedUserID} from '../../utils/loggedUser';
 import { Colors } from '../../styledHelpers/colorsUtils';
 import { fontSize } from '../../styledHelpers/fontUtils';
+import SwitcherFallowed from "../Common/SwitcherFallowed";
+import SearchBar from "../Common/SearchBar";
+import SmallIcon from "../Common/SmallIcon";
+import { getPhotos } from "../../actions/photosAction";
+import { IPhotoReducer } from "../../reducers/photosReducers";
 
 const Wrapper = styled.div``;
 
@@ -21,6 +26,8 @@ const Header = styled.div`
     display: flex;
     justify-content: space-between;
     font-size: ${fontSize.sectionTitle};
+    margin-top: 20px;
+    color: ${Colors.blue};
 `;
 
 const WorkPanel = styled.div`
@@ -43,10 +50,17 @@ const Footer = styled.footer`
   margin-top: 10px;
 `;
 
-const FooterName = styled.p``;
+const FooterName = styled.p`
+  padding-left: 10px;
+`;
 
 const FooterContractType = styled.p`
   padding: 0 20px;
+  display: flex;
+
+  & p { 
+    padding-left: 10px;
+  }
 `;
 
 const PaginationConteiner = styled.div`
@@ -67,12 +81,14 @@ const PaginationConteiner = styled.div`
     color: ${Colors.textBlack};
   }
 `
-const CustomSelect = styled.select``;
 
+const SearchWrapper = styled.div`
+  display: flex;
+`
 const Date = styled.p``;
 
 type GetPosts = ReturnType<typeof getPosts>
-type GetUsers = ReturnType<typeof getUsers>
+type GetPhotos = ReturnType<typeof getPhotos>
 
 const ResumeYouWork = () => {
   const dispatch = useDispatch();
@@ -81,7 +97,16 @@ const ResumeYouWork = () => {
     dispatch<GetPosts>(getPosts())
   }, []);
 
- 
+  
+  useEffect(() => {
+    dispatch<GetPhotos>(getPhotos())
+  }, []);
+
+
+  const photos = useSelector<IState,IPhotoReducer> (state =>({
+    ...state.photos
+}))
+
   const posts = useSelector<IState, IWorkspaceReducer> (state => ({
       ...state.posts
   }))
@@ -142,8 +167,12 @@ const ResumeYouWork = () => {
         {ele.body}
       </PanelDescription>
       <Footer>
+        <SmallIcon src={photos.photosList[(Math.floor(Math.random() * 10 ))].url} alt="userPhoto"/>
         <FooterName>{usersList[1].company.name}</FooterName>
-        <FooterContractType>Corporate</FooterContractType>
+        <FooterContractType>
+          <SmallIcon src="./media/request.png" alt="requestIcon" />
+          <p>Corporate</p>
+        </FooterContractType>
         <Date> Updated 3 days ago {usersList[(Math.floor(Math.random() * 10 ))].name}</Date>
       </Footer>
     </WorkPanel>
@@ -151,16 +180,12 @@ const ResumeYouWork = () => {
   
   return (
     <Wrapper>
-    
       <Header>
       {location.pathname=="/" ? "Resume you work" : "Latest Publications"}
-      <div>
-        <input type="text" value={inputText} onChange={inputHandler}></input>
-            <CustomSelect onChange={changeFollowed} value={followed}>
-                <option value="All">All</option>
-                <option value="Fallowed">Fallowed</option>
-              </CustomSelect>
-      </div>
+      <SearchWrapper>
+        <SearchBar value={inputText} onChange={inputHandler}/>
+        <SwitcherFallowed onChange={changeFollowed} value={followed}/>
+      </SearchWrapper>
       </Header>
       {location.pathname!=="/" ? <NavbarWorkspaces/> : ""}
        {renderWorkPanels}

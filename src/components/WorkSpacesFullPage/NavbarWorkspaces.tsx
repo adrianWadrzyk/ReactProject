@@ -4,9 +4,11 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
     display: flex;
-    width: 70%;
-    margin: 0 auto;
+    width: 60%;
     justify-content: space-between;
+    margin-left: 10px;
+    background-color: white;
+    padding: 0 10px;
 `;
 
 const Option = styled.p`
