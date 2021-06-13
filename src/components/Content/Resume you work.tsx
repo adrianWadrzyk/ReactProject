@@ -1,7 +1,8 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Pagination from 'react-js-pagination';
-
+import { useLocation } from 'react-router-dom'
+import NavbarWorkspaces from "../WorkSpacesFullPage/NavbarWorkspaces";
 import { IState } from '../../reducers';
 import { IWorkspaceReducer } from '../../reducers/workSpaceReducers';
 import { IUserReducer } from '../../reducers/userReducers';
@@ -127,7 +128,9 @@ const ResumeYouWork = () => {
     const handlePageChange = ( pageNumber : any ) => {
       setCurrentPage( pageNumber )
    };
-    
+
+   const location = useLocation();
+
 
 
   const renderWorkPanels = currentPosts.map(ele => (
@@ -150,7 +153,7 @@ const ResumeYouWork = () => {
     <Wrapper>
     
       <Header>
-      Resume you work
+      {location.pathname=="/" ? "Resume you work" : "Latest Publications"}
       <div>
         <input type="text" value={inputText} onChange={inputHandler}></input>
             <CustomSelect onChange={changeFollowed} value={followed}>
@@ -159,6 +162,7 @@ const ResumeYouWork = () => {
               </CustomSelect>
       </div>
       </Header>
+      {location.pathname!=="/" ? <NavbarWorkspaces/> : ""}
        {renderWorkPanels}
 
       <PaginationConteiner>

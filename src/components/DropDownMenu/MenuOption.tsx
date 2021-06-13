@@ -52,7 +52,7 @@ const MenuOption = (props: any) => {
         {"People".toLowerCase().includes(props.inputText.toLowerCase()) && (
           <Option>
             <Icon src="./media/people.png"></Icon>
-            <OptionName>People</OptionName>
+            <OptionName><Link to="/profile">Profile</Link></OptionName>
           </Option>
         )}
         {"Entities".toLowerCase().includes(props.inputText.toLowerCase()) && (

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { fontSize } from '../../styledHelpers/fontUtils';
-import ResumeYouWork from '../Content/Resume you work'
+
 const Wrapper = styled.div``;
 
 const Tiles = styled.div`

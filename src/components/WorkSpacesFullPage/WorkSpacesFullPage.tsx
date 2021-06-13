@@ -16,7 +16,6 @@ class WorkSpacesFullPage extends React.Component {
             <MainWrapper>
                 <CorporateHodlings></CorporateHodlings>
                 <CorporateWorking></CorporateWorking>
-                <NavbarWorkspaces></NavbarWorkspaces>
                 <ResumeYouWork></ResumeYouWork>
             </MainWrapper>
         )

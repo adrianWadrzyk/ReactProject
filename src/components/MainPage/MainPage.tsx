@@ -8,6 +8,7 @@ import WorkSpacesFullPage from '../WorkSpacesFullPage/WorkSpacesFullPage'
 import {store} from '../../store';
 import {Provider} from 'react-redux';
 import {Colors} from '../../styledHelpers/colorsUtils';
+import Profile from '../Profile/Profile';
 
 const Wrapper = styled.div`
     background-color: ${Colors.mainBackgroundColor}; ;
@@ -34,7 +35,9 @@ const MainPage = () => {
                     <LeftNav />
                     <Route exact path="/" component={ContentWrapper} />
                     <Route path="/entities" component={Entities} />
-                    <Route path="/corporation" component={WorkSpacesFullPage}></Route>
+                    <Route path="/corporation" component={WorkSpacesFullPage} />    
+                    <Route path="/profile" component={Profile} />
+
                 </Content>
             </Wrapper>
         </Router>
