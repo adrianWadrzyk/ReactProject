@@ -556,7 +556,7 @@ const Profile = () => {
         </SingleSection>
         <SingleSection>
             <InnerWrapper  className="gray">
-            <   SmallPhoto src={photos.photo.url}/>{isEditing?  <EditingInput value={SecondCorrespondantsText}  onChange={inputSecondCorrespondants}></EditingInput> : <StaticValue>{SecondCorrespondantsText}</StaticValue> } 
+                <SmallPhoto src={photos.photo.url}/>{isEditing?  <EditingInput value={SecondCorrespondantsText}  onChange={inputSecondCorrespondants}></EditingInput> : <StaticValue>{SecondCorrespondantsText}</StaticValue> } 
                 <SmallIcon src="./media/comment.png" alt="commentIcon"/>
                 <StaticValue>Message</StaticValue>
                 <SmallIcon src="./media/profile.png" alt="profileIcon"/>

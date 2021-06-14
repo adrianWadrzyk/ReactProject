@@ -22,7 +22,7 @@ import { IPhotoReducer } from "../../reducers/photosReducers";
 const Wrapper = styled.div``;
 
 const Header = styled.div`
-    padding: 10px;
+    padding: 10px 10ox 10px 0px;
     display: flex;
     justify-content: space-between;
     font-size: ${fontSize.sectionTitle};
@@ -97,50 +97,43 @@ const ResumeYouWork = () => {
     dispatch<GetPosts>(getPosts())
   }, []);
 
-  
   useEffect(() => {
     dispatch<GetPhotos>(getPhotos())
   }, []);
 
-
-  const photos = useSelector<IState,IPhotoReducer> (state =>({
+  let photos = useSelector<IState,IPhotoReducer> (state =>({
     ...state.photos
 }))
 
-  const posts = useSelector<IState, IWorkspaceReducer> (state => ({
+  let posts = useSelector<IState, IWorkspaceReducer> (state => ({
       ...state.posts
   }))
 
-  const users = useSelector<IState, IUserReducer> (state => ({
+  let users = useSelector<IState, IUserReducer> (state => ({
       ...state.users
   }))
 
   const [inputText, setInputText] = useState<string>('');
-
   const inputHandler = (e : ChangeEvent<HTMLInputElement>) => { 
       const text =  e.target.value;
       setInputText(text);
   }
   
   const [followed, setFollowed] = useState<string>("All");
-
   const changeFollowed = (e : any) => { 
       const text = e.target.value;
       setFollowed(text);
   }
 
+
   let data = posts.postList;
 
-  data = data.filter(e => { 
-        return e.name.includes(inputText);
-  })
-  
+  data = data.filter(e =>e.name.includes(inputText))
+
   if(followed == "Fallowed") {
-    data = data.filter(e => { 
-      return e.id == loggedUserID
-    })
+    data = data.filter(e => e.postId == loggedUserID)
   };
-    
+
   const usersList = users.userList;
   const panelPerPage = 10;
   const [activePage, setCurrentPage] = useState(1);
@@ -157,13 +150,12 @@ const ResumeYouWork = () => {
    const location = useLocation();
 
 
-
-  const renderWorkPanels = currentPosts.map(ele => (
+const renderWorkPanels = currentPosts.map(ele => (
       <WorkPanel>
       <Title>
         {ele.name}
       </Title>
-      <PanelDescription>
+      <PanelDescription>        
         {ele.body}
       </PanelDescription>
       <Footer>
@@ -181,7 +173,7 @@ const ResumeYouWork = () => {
   return (
     <Wrapper>
       <Header>
-      {location.pathname=="/" ? "Resume you work" : "Latest Publications"}
+      {location.pathname=="/" ? "Resume you work" : "Latest Publications sdsds"}
       <SearchWrapper>
         <SearchBar value={inputText} onChange={inputHandler}/>
         <SwitcherFallowed onChange={changeFollowed} value={followed}/>

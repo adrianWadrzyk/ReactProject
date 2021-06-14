@@ -81,9 +81,7 @@ const EntitiesTale = (props: any) => {
          filtered.sort((a, b) => (a.name > b.name ? -1 : 1))
 
     if(props.followed == "Fallowed")
-    filtered = filtered.filter(e => {
-        return e.userID == loggedUserID;
-    })
+        filtered = filtered.filter(e =>  e.userID == loggedUserID)
 
     return(
         <Wrapper active={props.view}>

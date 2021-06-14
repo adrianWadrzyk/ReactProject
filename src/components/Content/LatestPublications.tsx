@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PublicationPhoto from './PublicationPhoto';
 
-import { getUser, getUsers } from '../../actions/userActions';
+import { getUsers } from '../../actions/userActions';
 import { getPublications } from '../../actions/latestPublicationsActions';
 
 import { IUserReducer } from '../../reducers/userReducers';
@@ -30,7 +30,6 @@ const NewestPublication = styled.div`
     flex-direction: column;
     justify-content: flex-end;
     padding: 10px 20px;
-
     & .${authorNewest} {
         font-size: ${fontSize.subTitle};
     }
@@ -109,14 +108,17 @@ const LatestPublications = () => {
         ...state.latesPublications
     }))
 
+    const publicationsList = publications.publicationsList;
+    const first = publicationsList[0];
+    const latest = publicationsList.slice(1,4);
+
     return(
       <Conteiner>
           <NewestPublication>
             <PublicationDescription className='newestDescription'>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis sint eveniet dolor nobis 
-                        modi nemo minus iusto maiores quas eligendi numquam voluptate iste harum
+            {first.body}
             </PublicationDescription>
-            <Author className='authorNewest'> January 25 </Author>
+            <Author className='authorNewest'> {users.userList[first.userId].name} January 25 </Author>
           </NewestPublication>
           <RightConteinerPublications>
 
@@ -125,38 +127,17 @@ const LatestPublications = () => {
             </Header>
 
             <PublicationsConteiner>
-             <Publication>
-                 <PublicationPhoto id={1}></PublicationPhoto>
-                 <InnerWrapper>
-                    <PublicationDescription>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis sint eveniet dolor nobis 
-                        modi nemo minus iusto maiores quas eligendi numquam voluptate iste harum
-                    </PublicationDescription>
-                    <Author> January 25 Janik</Author>
-                 </InnerWrapper>
-             </Publication>
-             <Publication>
-                 <PublicationPhoto id={2}></PublicationPhoto>
-                 <InnerWrapper>
-                    <PublicationDescription>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis sint eveniet dolor nobis 
-                        modi nemo minus iusto maiores quas eligendi numquam voluptate iste harum
-                    </PublicationDescription>
-                    <Author> January 25 Janik</Author>
-                 </InnerWrapper>
-             </Publication>
-             <Publication>
-                 <PublicationPhoto id={3}></PublicationPhoto>
-                 <InnerWrapper>
-                    <PublicationDescription>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis sint eveniet dolor nobis 
-                        modi nemo minus iusto maiores quas eligendi numquam voluptate iste harum
-                    </PublicationDescription>
-                    <Author> January 25 Janik</Author>
-                 </InnerWrapper>
-             </Publication>
-     
-     
+            {latest.map(ele =>  (
+                <Publication>
+                    <PublicationPhoto id={ele.id}></PublicationPhoto>
+                    <InnerWrapper>
+                        <PublicationDescription>
+                            {ele.body}
+                        </PublicationDescription>
+                        <Author> January 25 {users.userList[ele.userId].name}</Author>
+                    </InnerWrapper>
+                </Publication>     
+            ))}
             </PublicationsConteiner>
             <SeeMore>See more publications...</SeeMore>
           </RightConteinerPublications>

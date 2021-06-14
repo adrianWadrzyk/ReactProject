@@ -163,7 +163,7 @@ const PrivateProfile = () => {
                 {isEditing?  <EditingInput value={telephoneText}  onChange={inputTelephone}></EditingInput> : <p>{telephoneText}</p> }
             </Contact>
             <EditWrapper>
-            <   Edit onClick={handleEditClick}/>
+            <Edit onClick={handleEditClick}/>
             </EditWrapper>
         </Wrapper>
     )

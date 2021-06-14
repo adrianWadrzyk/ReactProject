@@ -4,6 +4,7 @@ const CustomSelect = styled.select`
     height: 25px;
     border: none;
     background-color: none;
+    padding: 0 10px;
 `;
 
 const SwitcherFallowed = (props : any) => { 

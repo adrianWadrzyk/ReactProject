@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import React, {FC, useEffect, useState} from 'react';
+import { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
 import { getUser, getUsers } from '../../actions/userActions';
 import { IState } from '../../reducers';
 import { IUserReducer } from '../../reducers/userReducers';
 import { getPhoto, getPhotos } from '../../actions/photosAction';
 import { IPhotoReducer } from '../../reducers/photosReducers';
 import { Colors } from '../../styledHelpers/colorsUtils';
+import { loggedUserID } from '../../utils/loggedUser';
 
 const Wrapper = styled.div `
     width: 100%;
@@ -34,18 +34,13 @@ const FullName = styled.h2`
 const JobTitle = styled.h4``;
 
 type GetUser = ReturnType<typeof getUser>
-type GetUsers = ReturnType<typeof getUsers>
 type GetPhoto = ReturnType<typeof getPhoto>
-
-type PostParams = { 
-    id: string;
-}
 
 const Profile = () => { 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch<GetUser>(getUser("1"));
+        dispatch<GetUser>(getUser(loggedUserID.toString()));
        }, []);
 
     useEffect(() => {
@@ -59,14 +54,14 @@ const Profile = () => {
         ...state.photos
     }))
 
-    const data = rec.user;
+    const user = rec.user;
     const photo = photos.photo;
 
     return (
         <Wrapper>
                 <Avatar alt="avatar" src={`${photo.url}`}></Avatar>
-                <FullName>{data.name} {data.username}</FullName>
-                <JobTitle>{data.company.name}</JobTitle>
+                <FullName>{user.name} {user.username}</FullName>
+                <JobTitle>{user.company.name}</JobTitle>
         </Wrapper>        
     );
 }

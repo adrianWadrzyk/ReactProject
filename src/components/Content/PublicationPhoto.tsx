@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { IState } from '../../reducers';
 import { IPhotoReducer } from '../../reducers/photosReducers';
-import { getPhoto, getPhotos } from '../../actions/photosAction';
+import { getPhotos } from '../../actions/photosAction';
 
 
 const Photo = styled.img`
@@ -13,22 +13,21 @@ const Photo = styled.img`
     margin: 0 20px;
 `;
 
-type GetPhoto = ReturnType<typeof getPhoto>
+type GetPhotos = ReturnType<typeof getPhotos>
 
 const PublicationPhoto =  (props :any) => { 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch<GetPhoto>(getPhoto(props.id))
+        dispatch<GetPhotos>(getPhotos())
       }, []);
 
       const rec = useSelector<IState, IPhotoReducer> (state => ({
         ...state.photos
     }));
 
-    const data = rec.photo;
     return (
-        <Photo src={`${data.url}`}></Photo>
+        <Photo src={`${rec.photosList[props.id].url}`}></Photo>
   
     )
 }

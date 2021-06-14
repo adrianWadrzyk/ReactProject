@@ -7,7 +7,6 @@ const EditIcon = styled.img`
 
 
 const Edit = (props : any) => { 
-    console.log(props.onClick);
     return (
         <EditIcon onClick={props.onClick} src="./media/pencil.png" alt='edit' />
     )

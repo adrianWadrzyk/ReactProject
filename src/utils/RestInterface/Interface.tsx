@@ -7,7 +7,7 @@ export interface IComment {
 }
 
 export interface IWorkspace {
-    postID: number,
+    postId: number,
     id: number,
     name: string,
     email: string,
@@ -52,7 +52,7 @@ export interface IAddress {
 }
 
 export interface ILatestPublicationPost { 
-    userID: number,
+    userId: number,
     id: number,
     title: string,
     body: string
