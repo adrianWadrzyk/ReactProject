@@ -85,7 +85,6 @@ const InnerWrapper=styled.div`
     align-items: center;
 `;
 
-const CustomSelect = styled.select``;
 
 const Entities = () => { 
 

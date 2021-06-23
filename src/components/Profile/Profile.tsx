@@ -173,13 +173,13 @@ const Profile = () => {
     const users = useSelector<IState, IUserReducer> (state =>({
             ...state.users
         }))
-    const [FirstCorrespondantsText, setInputFirstCorrespondantsText] = useState<string>(`${users.userList[1].name}`);
+    const [FirstCorrespondantsText, setInputFirstCorrespondantsText] = useState<string>(`${users?.userList[1]?.name}`);
     const inputFirstCorrespondants = (e : ChangeEvent<HTMLInputElement>) => { 
         const text =  e.target.value;
         setInputFirstCorrespondantsText(text);
     }
 
-    const [SecondCorrespondantsText, setInputSecondCorrespondantsText] = useState<string>(`${users.userList[2].name}`);
+    const [SecondCorrespondantsText, setInputSecondCorrespondantsText] = useState<string>(`${users?.userList[2]?.name}`);
     const inputSecondCorrespondants = (e : ChangeEvent<HTMLInputElement>) => { 
         const text =  e.target.value;
         setInputSecondCorrespondantsText(text);

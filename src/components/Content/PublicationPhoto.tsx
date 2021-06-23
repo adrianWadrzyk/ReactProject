@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { IState } from '../../reducers';
@@ -18,16 +18,13 @@ type GetPhotos = ReturnType<typeof getPhotos>
 const PublicationPhoto =  (props :any) => { 
     const dispatch = useDispatch();
 
-    useEffect(() => {
+    useEffect (() => {
         dispatch<GetPhotos>(getPhotos())
       }, []);
 
-      const rec = useSelector<IState, IPhotoReducer> (state => ({
-        ...state.photos
-    }));
-
+      const rec = useSelector<IState, IPhotoReducer> (state => ({...state.photos}))
     return (
-        <Photo src={`${rec.photosList[props.id].url}`}></Photo>
+        <Photo src={`${rec?.photosList[props?.id]?.url}`}></Photo>
   
     )
 }

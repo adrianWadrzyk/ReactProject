@@ -4,7 +4,6 @@ import users, {IUserReducer} from './userReducers'
 import posts, {IWorkspaceReducer} from './workSpaceReducers';
 import latesPublications, {ILatestPublicationReducer} from './latestPublicationsReducers';
 import fakeCompany, {IFakeCompanyReducer} from './fakeCompaniesReducer';
-
 import photos, {IPhotoReducer} from './photosReducers';
 
 export default combineReducers({

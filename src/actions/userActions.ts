@@ -2,9 +2,9 @@ import {Dispatch} from 'redux';
 import * as actionTypes from './actionTypes/userTypes';
 import {IUser} from '../utils/RestInterface/Interface';
 
-export const getUsers = () : Promise<IUser[]> => ((dispatch: Dispatch)=>{
+export const getUsers =  () : Promise<IUser[]> =>  ( async(dispatch: Dispatch)=>{
 
-    return fetch("https://jsonplaceholder.typicode.com/users")
+    return await fetch("https://jsonplaceholder.typicode.com/users")
             .then(response => response.json())
             .then((usersList: IUser[]) =>{
                 dispatch(
@@ -15,9 +15,9 @@ export const getUsers = () : Promise<IUser[]> => ((dispatch: Dispatch)=>{
             })
     }) as any;
 
-export const getUser = (id: string) : Promise<IUser> => ((dispatch: Dispatch)=>{
+export const getUser =  (id: string) : Promise<IUser> =>  ( async (dispatch: Dispatch)=>{
 
-        return fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+        return await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
                 .then(response => response.json())
                 .then((user: IUser) =>{
                     dispatch(

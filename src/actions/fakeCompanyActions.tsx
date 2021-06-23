@@ -9,8 +9,7 @@ export  const getFakeCompany =  (): Promise<IFakeCompany[]> => ( async (dispatch
     let users : Array<IUser> =   await fetch("https://jsonplaceholder.typicode.com/users").then(response => response.json());
     let photos: Array<IPhoto> =  await fetch("https://jsonplaceholder.typicode.com/photos").then(response => response.json());
     users = [...users, ...users, ...users];
-    console.log(users);
-    let address = Promise.all(users.map((user, i) => { 
+    Promise.all(users.map((user, i) => { 
         const newAddress : IFakeCompany = {
         id: i,
         address: `${user.address.city}`,

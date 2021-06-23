@@ -9,7 +9,6 @@ import { IUserReducer } from '../../reducers/userReducers';
 
 import styled from "styled-components"; 
 import { getPosts } from "../../actions/workSpaceActions";
-import { getUser, getUsers } from '../../actions/userActions';
 import {loggedUserID} from '../../utils/loggedUser';
 import { Colors } from '../../styledHelpers/colorsUtils';
 import { fontSize } from '../../styledHelpers/fontUtils';
@@ -149,7 +148,6 @@ const ResumeYouWork = () => {
 
    const location = useLocation();
 
-
 const renderWorkPanels = currentPosts.map(ele => (
       <WorkPanel>
       <Title>
@@ -159,13 +157,13 @@ const renderWorkPanels = currentPosts.map(ele => (
         {ele.body}
       </PanelDescription>
       <Footer>
-        <SmallIcon src={photos.photosList[(Math.floor(Math.random() * 10 ))].url} alt="userPhoto"/>
-        <FooterName>{usersList[1].company.name}</FooterName>
+        <SmallIcon src={photos?.photosList[(Math.floor(Math.random() * 10 ))]?.url} alt="userPhoto"/>
+        <FooterName>{usersList[1]?.company.name}</FooterName>
         <FooterContractType>
           <SmallIcon src="./media/request.png" alt="requestIcon" />
           <p>Corporate</p>
         </FooterContractType>
-        <Date> Updated 3 days ago {usersList[(Math.floor(Math.random() * 10 ))].name}</Date>
+        <Date> Updated 3 days ago {usersList[(Math.floor(Math.random() * 10 ))]?.name}</Date>
       </Footer>
     </WorkPanel>
   ))

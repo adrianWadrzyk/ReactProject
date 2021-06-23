@@ -2,8 +2,8 @@ import {Dispatch} from 'redux';
 import * as actionTypes from './actionTypes/resumeYouWorkTypes';
 import {IWorkspace} from '../utils/RestInterface/Interface';
 
-export const getPosts = () : Promise<IWorkspace[]> => ( (dispatch: Dispatch) => { 
-   return  fetch("https://jsonplaceholder.typicode.com/comments")
+export const getPosts = () : Promise<IWorkspace[]> => ( async (dispatch: Dispatch) => { 
+   return  await fetch("https://jsonplaceholder.typicode.com/comments")
     .then(response => response.json())
     .then((postList: IWorkspace[]) => { 
         dispatch( {
@@ -13,8 +13,8 @@ export const getPosts = () : Promise<IWorkspace[]> => ( (dispatch: Dispatch) => 
     })
 }) as any
 
-export const getPost = (id:string) : Promise<IWorkspace> => ((dispatch: Dispatch) => { 
-    return fetch(`https://jsonplaceholder.typicode.com/comments/${id}`)
+export const getPost = (id:string) : Promise<IWorkspace> => (async (dispatch: Dispatch) => { 
+    return await fetch(`https://jsonplaceholder.typicode.com/comments/${id}`)
      .then(response => response.json())
      .then((post: IWorkspace) => { 
          dispatch( {

@@ -1,8 +1,10 @@
+import {Provider} from 'react-redux';
 import ReactDOM from 'react-dom';
 import { createGlobalStyle } from 'styled-components';
 
 import {Reset} from 'styled-reset';
 import MainPage from './components/MainPage/MainPage';
+import { store } from './store';
 
 const GlobalStyle = createGlobalStyle`
   * { 
@@ -13,10 +15,12 @@ const GlobalStyle = createGlobalStyle`
 `
 
 ReactDOM.render(
-  <>    
+  <>
     <GlobalStyle />
     <Reset />
-    <MainPage />
+    <Provider store={store}>   
+     <MainPage />
+    </Provider>
   </>,
   document.getElementById('root')
 );

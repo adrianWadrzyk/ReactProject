@@ -27,7 +27,6 @@ const Content = styled.div`
 
 const MainPage = () => { 
     return (
-        <Provider store={store}>
         <Router>
             <Wrapper>
                 <TopBar />
@@ -37,11 +36,9 @@ const MainPage = () => {
                     <Route path="/entities" component={Entities} />
                     <Route path="/corporation" component={WorkSpacesFullPage} />    
                     <Route path="/profile" component={Profile} />
-
                 </Content>
             </Wrapper>
         </Router>
-        </Provider>
     );
 };
 

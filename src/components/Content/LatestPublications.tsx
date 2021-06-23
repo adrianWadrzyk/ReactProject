@@ -5,7 +5,6 @@ import PublicationPhoto from './PublicationPhoto';
 
 import { getUsers } from '../../actions/userActions';
 import { getPublications } from '../../actions/latestPublicationsActions';
-
 import { IUserReducer } from '../../reducers/userReducers';
 import { ILatestPublicationReducer } from '../../reducers/latestPublicationsReducers';
 
@@ -92,17 +91,15 @@ type GetPublications = ReturnType<typeof getPublications>
 const LatestPublications = () => {
     const dispatch = useDispatch();
 
-    useEffect(() => {
+    useEffect ( () => {
         dispatch<GetUsers>(getUsers())
-      }, []);
+        dispatch<GetPublications>(getPublications())
+      }, [dispatch]);
     
-      const users = useSelector<IState, IUserReducer> (state => ({
+
+    const users = useSelector<IState, IUserReducer> (state => ({
         ...state.users
     }))
-
-    useEffect(() => {
-        dispatch<GetPublications>(getPublications())
-    }, []);
 
     const publications = useSelector<IState, ILatestPublicationReducer> (state => ({
         ...state.latesPublications
@@ -111,14 +108,15 @@ const LatestPublications = () => {
     const publicationsList = publications.publicationsList;
     const first = publicationsList[0];
     const latest = publicationsList.slice(1,4);
-
+    const firstName = users?.userList[first?.userId]?.name
+    
     return(
       <Conteiner>
           <NewestPublication>
             <PublicationDescription className='newestDescription'>
-            {first.body}
+            {first?.body}
             </PublicationDescription>
-            <Author className='authorNewest'> {users.userList[first.userId].name} January 25 </Author>
+            <Author className='authorNewest'> {firstName} January 25 </Author>
           </NewestPublication>
           <RightConteinerPublications>
 
@@ -134,7 +132,7 @@ const LatestPublications = () => {
                         <PublicationDescription>
                             {ele.body}
                         </PublicationDescription>
-                        <Author> January 25 {users.userList[ele.userId].name}</Author>
+                        <Author> January 25 {users?.userList[ele?.userId]?.name}</Author>
                     </InnerWrapper>
                 </Publication>     
             ))}
