@@ -11,7 +11,7 @@ import { ILatestPublicationReducer } from '../../reducers/latestPublicationsRedu
 import { IState } from '../../reducers';
 import { Colors } from '../../styledHelpers/colorsUtils';
 import { fontSize } from '../../styledHelpers/fontUtils';
-
+import StyledLink from '../Common/Link';
 
 const Conteiner = styled.div`
     height:100%;
@@ -29,6 +29,11 @@ const NewestPublication = styled.div`
     flex-direction: column;
     justify-content: flex-end;
     padding: 10px 20px;
+    margin: 10px;
+    background-image: url("https://via.placeholder.com/600/92c952");
+    background-position: center;
+    background-size: cover;
+
     & .${authorNewest} {
         font-size: ${fontSize.subTitle};
     }
@@ -80,7 +85,6 @@ const Author = styled.div`
 
 const SeeMore = styled.p`
     font-size: ${fontSize.mediumText};
-    color: ${Colors.blue};
     margin-top: 5px;
     text-align: right;
 `;
@@ -108,7 +112,7 @@ const LatestPublications = () => {
     const publicationsList = publications.publicationsList;
     const first = publicationsList[0];
     const latest = publicationsList.slice(1,4);
-    const firstName = users?.userList[first?.userId]?.name
+    const firstName = users.userList[first.userId]?.name
     
     return(
       <Conteiner>
@@ -137,7 +141,7 @@ const LatestPublications = () => {
                 </Publication>     
             ))}
             </PublicationsConteiner>
-            <SeeMore>See more publications...</SeeMore>
+            <SeeMore><StyledLink to="/corporation">See more publications...</StyledLink></SeeMore>
           </RightConteinerPublications>
       </Conteiner>
     )

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {Link} from 'react-router-dom';
+import StyledLink from "../Common/Link";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPhoto } from "../../actions/photosAction";
@@ -38,7 +38,7 @@ const GroupName = styled.h4`
 
 const OptionName = styled.p`
 
-  Link { 
+  StyledLink { 
     text-decoration: none;
   }
 `;
@@ -101,7 +101,7 @@ const MenuOption = (props: any) => {
         {"Home".toLowerCase().includes(props.inputText.toLowerCase()) && (
           <Option>
             <Icon src="./media/house.png"/>
-            <OptionName><Link to="/">Home</Link></OptionName>
+            <OptionName><StyledLink to="/">Home</StyledLink></OptionName>
           </Option>
         )}
         {"Publication"
@@ -109,19 +109,19 @@ const MenuOption = (props: any) => {
           .includes(props.inputText.toLowerCase()) && (
           <Option>
             <Icon src="./media/publications.png"/>
-            <OptionName><Link to="/corporation">Publication</Link></OptionName>
+            <OptionName><StyledLink to="/corporation">Publication</StyledLink></OptionName>
           </Option>
         )}
         {"People".toLowerCase().includes(props.inputText.toLowerCase()) && (
           <Option>
             <Icon src="./media/people.png"/>
-            <OptionName><Link to="/profile">Profile</Link></OptionName>
+            <OptionName><StyledLink to="/profile">Profile</StyledLink></OptionName>
           </Option>
         )}
         {"Entities".toLowerCase().includes(props.inputText.toLowerCase()) && (
           <Option>
             <Icon src="./media/entities.png"/>
-            <OptionName><Link to="/entities">Entities</Link></OptionName>
+            <OptionName><StyledLink to="/entities">Entities</StyledLink></OptionName>
           </Option>
         )}
         {"Administration"
@@ -129,7 +129,7 @@ const MenuOption = (props: any) => {
           .includes(props.inputText.toLowerCase()) && (
           <Option>
             <Icon src="./media/people.png"/>
-            <OptionName>Administration</OptionName>
+            <OptionName><StyledLink to="/moc">Administration</StyledLink></OptionName>
           </Option>
         )}
       </Group>
@@ -140,7 +140,7 @@ const MenuOption = (props: any) => {
           .includes(props.inputText.toLowerCase()) && (
           <Option>
             <Icon src="./media/people.png"/>
-            <OptionName>Client contract</OptionName>
+            <OptionName><StyledLink to="/moc">Client contrac</StyledLink></OptionName>
           </Option>
         )}
         {"Supplier contract"
@@ -148,7 +148,7 @@ const MenuOption = (props: any) => {
           .includes(props.inputText.toLowerCase()) && (
           <Option>
             <Icon src="./media/people.png"/>
-            <OptionName>Suplier contract</OptionName>
+            <OptionName><StyledLink to="/moc">Suplier contract</StyledLink></OptionName>
           </Option>
         )}
         {"Corporate"
@@ -156,7 +156,7 @@ const MenuOption = (props: any) => {
           .includes(props.inputText.toLowerCase()) && (
           <Option>
             <Icon src="./media/people.png"/>
-            <OptionName>Corporate</OptionName>
+            <OptionName><StyledLink to="/moc">Corporate</StyledLink></OptionName>
           </Option>
         )}
         {"Group Norms"
@@ -164,7 +164,7 @@ const MenuOption = (props: any) => {
           .includes(props.inputText.toLowerCase()) && (
           <Option>
             <Icon src="./media/people.png"/>
-            <OptionName>Group Norms</OptionName>
+            <OptionName><StyledLink to="/moc">Group Norms</StyledLink></OptionName>
           </Option>
         )}
         {"Real estate contracts"
@@ -172,7 +172,7 @@ const MenuOption = (props: any) => {
           .includes(props.inputText.toLowerCase()) && (
           <Option>
             <Icon src="./media/people.png"/>
-            <OptionName>Real estate contracts</OptionName>
+            <OptionName><StyledLink to="/moc">Real estate co</StyledLink>tracts</OptionName>
           </Option>
         )}
       </Group>
@@ -182,7 +182,7 @@ const MenuOption = (props: any) => {
           <Icon src={`${photo.url}`}/>
           <InnerWrapper>
             <p>{user.name}</p>
-            <p><Link to="/profile">See profile</Link></p>
+            <p><StyledLink to="/profile">See profile</StyledLink></p>
           </InnerWrapper>
         </Option>
 
@@ -191,7 +191,7 @@ const MenuOption = (props: any) => {
           .includes(props.inputText.toLowerCase()) && (
           <Option>
             <Icon src="./media/people.png"/>
-            <OptionName>Privacy</OptionName>
+            <OptionName><StyledLink to="moc">Privacy</StyledLink></OptionName>
           </Option>
         )}
          {"Setting"
@@ -199,7 +199,7 @@ const MenuOption = (props: any) => {
           .includes(props.inputText.toLowerCase()) && (
           <Option>
             <Icon src="./media/people.png"/>
-            <OptionName>Settings</OptionName>
+            <OptionName><StyledLink to="moc">Settings</StyledLink></OptionName>
           </Option>
         )}
            {"Logout"
@@ -207,7 +207,7 @@ const MenuOption = (props: any) => {
           .includes(props.inputText.toLowerCase()) && (
           <LogOut>
             <Icon src="./media/people.png"/>
-            <OptionName><Link to="/mock">Log out</Link></OptionName>
+            <OptionName><StyledLink to="/moc">Log out</StyledLink></OptionName>
           </LogOut>
         )}
         

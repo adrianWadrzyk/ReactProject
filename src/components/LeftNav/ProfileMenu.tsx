@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import StyledLink from '../Common/Link';
 
 const Wrapper = styled.div`
     display: flex;
@@ -39,33 +39,33 @@ const ProfileMenu = () => {
             <OptionWrapper>
                 <Option>
                     <Icon alt="network" src="./media/network.png"></Icon>
-                    <Title> Your Network</Title>
+                    <Title><StyledLink to="./moc"> Your Network</StyledLink></Title>
                     <Icon alt="user-plus" src="./media/user-plus.png"></Icon>
                 </Option>
             </OptionWrapper>
             <OptionWrapper>
                 <Option>
                     <Icon alt="icon" src="./media/publications.png"></Icon>
-                    <Title> Your Network</Title>
+                    <Title><StyledLink to="./moc"> Your Network </StyledLink></Title>
                     <Icon alt="plus" src="./media/plus.png"></Icon>
                 </Option>
             </OptionWrapper>
             <OptionWrapper>
                 <Option>
                     <Icon alt="publications" src="./media/publications.png"></Icon>
-                    <Title> Publications</Title>
+                    <Title><StyledLink to="/corporation"> Publications </StyledLink></Title>
                 </Option>
             </OptionWrapper>
             <OptionWrapper>
                 <Option>
                     <Icon alt="ecosystem" src="./media/ecosystem.png"></Icon>
-                    <Title> Ecosystem</Title>
+                    <Title><StyledLink to="./moc"> Ecosystem </StyledLink></Title>
                 </Option>
             </OptionWrapper>
             <OptionWrapper>
                 <Option>
                     <Icon alt="entities" src="./media/entities.png"></Icon>
-                    <Title> Entities</Title>
+                    <Title><StyledLink to="/entities"> Entities </StyledLink></Title>
                 </Option>
             </OptionWrapper>
         </Wrapper>        

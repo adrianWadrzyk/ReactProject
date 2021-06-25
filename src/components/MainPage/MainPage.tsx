@@ -5,11 +5,9 @@ import LeftNav from '../LeftNav/LeftNav';
 import ContentWrapper from '../Content/ContentWrapper';
 import Entities from '../Entities/Entities';
 import WorkSpacesFullPage from '../WorkSpacesFullPage/WorkSpacesFullPage'
-import {store} from '../../store';
-import {Provider} from 'react-redux';
 import {Colors} from '../../styledHelpers/colorsUtils';
 import Profile from '../Profile/Profile';
-
+import Message from '../Mockup/PageNotFound'; 
 const Wrapper = styled.div`
     background-color: ${Colors.mainBackgroundColor}; ;
     display: flex;
@@ -36,6 +34,7 @@ const MainPage = () => {
                     <Route path="/entities" component={Entities} />
                     <Route path="/corporation" component={WorkSpacesFullPage} />    
                     <Route path="/profile" component={Profile} />
+                    <Route path="/moc" component={Message} />
                 </Content>
             </Wrapper>
         </Router>

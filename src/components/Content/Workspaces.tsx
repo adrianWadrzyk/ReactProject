@@ -88,7 +88,7 @@ const Workspaces = () => {
             >
                   <SwiperSlide>
                   <SingleContainer onClick={redirect}>
-                    <Photo></Photo>
+                    <Photo />
                     <InsideWrapper>
                         <ContractIcon src="./media/administration.png"></ContractIcon>
                         <ContractName>Client contract</ContractName>
@@ -102,7 +102,7 @@ const Workspaces = () => {
                   </SwiperSlide>
                   <SwiperSlide>
                   <SingleContainer onClick={redirect}>
-                    <Photo></Photo>
+                    <Photo />
                     <InsideWrapper>
                         <ContractIcon src="./media/administration.png"></ContractIcon>
                         <ContractName>Client contract</ContractName>
@@ -116,7 +116,7 @@ const Workspaces = () => {
                   </SwiperSlide>
                 <SwiperSlide>
                   <SingleContainer onClick={redirect}>
-                    <Photo></Photo>
+                    <Photo />
                     <InsideWrapper>
                         <ContractIcon src="./media/administration.png"></ContractIcon>
                         <ContractName>Client contract</ContractName>
@@ -130,7 +130,7 @@ const Workspaces = () => {
                   </SwiperSlide>
                   <SwiperSlide>
                   <SingleContainer onClick={redirect}>
-                    <Photo></Photo>
+                    <Photo />
                     <InsideWrapper>
                         <ContractIcon src="./media/administration.png"></ContractIcon>
                         <ContractName>Client contract</ContractName>
@@ -144,7 +144,7 @@ const Workspaces = () => {
                   </SwiperSlide>
                   <SwiperSlide>
                   <SingleContainer onClick={redirect}>
-                    <Photo></Photo>
+                    <Photo />
                     <InsideWrapper>
                         <ContractIcon src="./media/administration.png"></ContractIcon>
                         <ContractName>Client contract</ContractName>
@@ -158,7 +158,7 @@ const Workspaces = () => {
                   </SwiperSlide>
                   <SwiperSlide>
                   <SingleContainer onClick={redirect}>
-                    <Photo></Photo>
+                    <Photo />
                     <InsideWrapper>
                         <ContractIcon src="./media/administration.png"></ContractIcon>
                         <ContractName>Client contract</ContractName>
